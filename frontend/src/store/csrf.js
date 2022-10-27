@@ -1,10 +1,10 @@
+import { storeCSRFToken } from "./sessionReducer"
 
-
-export const storeCSRFToken = (response) => {
-    console.log(response.headers)
-    const csrfToken = response.headers.get("X-CSRF-Token")
-    if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken)
-}
+// export const storeCSRFToken = (response) => {
+//     console.log(response.headers)
+//     const csrfToken = response.headers.get("X-CSRF-Token")
+//     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken)
+// }
 
 export const restoreCSRF = async () => {
     let response = await csrfFetch('/api/session')

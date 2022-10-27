@@ -1,21 +1,22 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { login, receiveUser, removeUser } from "../../store/sessionReducer"
+import { Redirect } from 'react-router-dom';
 
 const LoginForm = (props) => {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState();
     const [password, setPassword] = useState();
     const [errors, setErrors] = useState([]);
 
-
+    if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setErrors([])
         dispatch(login({ credential, password }))
         .catch(async (res) => {
-            debugger
             let data;
             try {
               data = await res.clone().json();
