@@ -4,11 +4,17 @@
 #
 #  id              :bigint           not null, primary key
 #  email           :string           not null
-#  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
+#  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email          (email) UNIQUE
+#  index_users_on_session_token  (session_token) UNIQUE
+#  index_users_on_username       (username) UNIQUE
 #
 class User < ApplicationRecord
   before_validation :ensure_session_token
@@ -21,6 +27,8 @@ class User < ApplicationRecord
   validates :username, format: { without: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: {in: 6..255}, allow_nil:true
   validates :session_token, presence:true
+
+  has_many :tracks, foreign_key: :artist_id, class_name: :Track
 
   def self.find_by_credentials(credential, password)
     if URI::MailTo::EMAIL_REGEXP.match(credential)

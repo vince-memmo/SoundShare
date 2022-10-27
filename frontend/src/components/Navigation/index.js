@@ -10,24 +10,21 @@ function Navigation() {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <ProfileButton user={sessionUser} />
+        <NavLink exact to="/">Home</NavLink>
       </>
     );
+  } else {
+
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {sessionLinks}
-      </li>
-    </ul>
+    <section className='navlink-section'>
+      <ul>
+          {sessionLinks}
+      </ul>
+    </section>
   );
 }
 

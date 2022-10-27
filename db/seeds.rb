@@ -8,23 +8,19 @@
 
 
 ApplicationRecord.transaction do 
-    puts "Destroying tables..."
-    # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
-  
-    puts "Resetting primary keys..."
-    # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    Track.destroy_all
+    ApplicationRecord.connection.reset_pk_sequence!('tracks')
   
-    puts "Creating users..."
-    # Create one user with an easy to remember username, email, and password:
+    # Seed Users
+
     User.create!(
       username: 'Demo-lition', 
       email: 'demo@user.io', 
       password: 'password'
     )
   
-    # More users
     3.times do 
       User.create!({
         username: Faker::Internet.unique.username(specifier: 3),
@@ -32,6 +28,27 @@ ApplicationRecord.transaction do
         password: 'password'
       }) 
     end
-  
-    puts "Done!"
+
+    # Seed Users
+
+    Track.create!({
+      name: 'song1',
+      audio_url: 'song1.mp3',
+      image_url: 'song1.jpeg',
+      artist_id: 1
+    })
+    
+    Track.create!({
+      name: 'song2',
+      audio_url: 'song2.mp3',
+      image_url: 'song2.jpeg',
+      artist_id: 2
+    })
+      
+    Track.create!({
+      name: 'song3',
+      audio_url: 'song3.mp3',
+      image_url: 'song3.jpeg',
+      artist_id: 3
+    })
   end
