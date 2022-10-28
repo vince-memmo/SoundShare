@@ -1,9 +1,22 @@
+.splash-page {
+    background-color: lightgrey;
+    height: 100vh;
+}
+
+.splash-banner {
+    position: relative;
+    height: .75vh;
+    width: 80vw;
+    background-color: #ff5500;
+    margin: 0 10vw;
+}
 
 .splash-parent {
     position: relative;
-    height: 40vh;
+    height: 55vh;
     width: 80vw;
     margin: 0 10vw;
+    /* background-image: url('../../assets/pics/carousel1.jpeg'); */
 }
 
 .splashPage-buttons {
@@ -11,37 +24,58 @@
     display: flex;
     z-index: 1;
     right: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    z-index: 2;
 }
 
-.login-button {
-    display: inline-block;
-    border: none;
-    height: 30px;
-    width: 120px;
-    margin: 10px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #ff5500;
+.for-creators {
+    display: flex;
     color: white;
-    border-radius: 3px;
-}
-
-.signup-button {
-    display: inline-block;
-    border: none;
     height: 30px;
-    width: 70px;
-    margin: 10px;
-    text-align: center;
-    cursor: pointer;
-    background: transparent;
-    color: white;
-    border: .5px white solid;
-    border-radius: 3px;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-weight: 100;
+    font-size: 15px;
 }
 
 img {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.swiper-wrapper {
+    list-style-type: none;
+    padding-inline-start: 0;
+    align-items: center;
+    margin: 0;
+}
+
+.swiper-slide swiper-slide-active {
+    padding-inline-start: 0;
+    margin: 0;
+}
+
+/* .swiper-slide-next {
+    display: none;
+}
+
+
+.swiper-slide-prev {
+    display: none;
+} */
+
+.swiper-pagination-bullet-active {
+    background-color: grey !important;
+    border-color: white;
+    
+}
+
+.swiper-pagination-bullet {
+    background-color: white !important;
+    border-color: white;
 }

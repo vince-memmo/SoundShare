@@ -23,3 +23,5 @@
 /config/master.key
 
 .byebug_history
+
+/public

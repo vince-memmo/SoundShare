@@ -1,13 +1,15 @@
-.signup-button {
+
+.login-button {
     display: inline-block;
     border: none;
     height: 30px;
-    width: 120px;
-    margin: 5px;
+    width: 70px;
+    margin: 10px;
     text-align: center;
     cursor: pointer;
-    background-color: #ff5500;
+    background: transparent;
     color: white;
+    border: .5px white solid;
     border-radius: 3px;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
