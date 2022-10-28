@@ -1,8 +1,8 @@
 
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import LoginForm from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
+import LoginForm from "./components/LoginFormModal/LoginForm.js";
+import SignupFormPage from "./components/SignupFormModal/SignupForm";
 import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
 
