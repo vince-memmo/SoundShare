@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: sound_share_production
-  username: sound_share
-  password: <%= ENV["SOUND_SHARE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
