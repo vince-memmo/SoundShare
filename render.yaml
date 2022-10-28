@@ -1,6 +1,6 @@
 databases:
   - name: soundshare
-    user: mysite
+    user: soundshare
     plan: free
     region: oregon
 
