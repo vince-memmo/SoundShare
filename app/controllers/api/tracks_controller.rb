@@ -1,19 +1,19 @@
-class Api::UsersController < ApplicationController
+class Api::TracksController < ApplicationController
 
     def index
         @tracks = Track.all
-        render json:
+        render :index
     end
   
-    def create
-      @track = Track.new(user_params)
+    # def create
+    #   @track = Track.new(user_params)
       
-      if @track.save
-        render :show
-      else
-        render json: status: 422
-      end
-    end
+    #   if @track.save
+    #     render :show
+    #   else
+    #     render json: status: 422
+    #   end
+    # end
   
     private
   

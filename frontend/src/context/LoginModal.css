@@ -1,3 +1,11 @@
+@keyframes slideIn {
+  from {
+      transform: translateY(-130%);
+  }
+  to {
+      transform: translateY(0%);
+  }
+}
 
 #modal {
     position: fixed;
@@ -23,4 +31,14 @@
   #modal-content {
     position: absolute;
     background-color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: auto;
+
+    animation: slideIn 0.3s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
   }

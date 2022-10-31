@@ -6,16 +6,19 @@ import SignupFormPage from "./components/SignupFormModal/SignupForm";
 import SplashPage from "./components/SplashPage";
 import { Swiper, SwiperSlide } from 'swiper'
 import Navigation from "./components/Navigation";
+import DiscoverPage from "./components/DiscoverPage/index.js";
 
 function App() {
   return (
     <>
-    <Navigation />
     <Switch>
       <Route exact path="/">
           <SplashPage />
       </Route>
-    
+      <Route path="/discover">
+          <Navigation />
+          <DiscoverPage />
+      </Route>
     </Switch>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/sessionReducer';
+import { Redirect } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();

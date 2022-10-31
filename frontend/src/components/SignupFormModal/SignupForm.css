@@ -13,3 +13,31 @@
     font-weight: 100;
     font-size: 13.5px;
 }
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    width: 400px;
+}
+
+.signup-form input{
+    margin: 10px 0;
+    width: 400px;
+}
+
+.signup-form button{
+    margin: 10px 0;
+    width: 400px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    background-color: #ff5500;
+    color: white;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 13.5px;
+}

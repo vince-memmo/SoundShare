@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { login, receiveUser, removeUser } from "../../store/sessionReducer"
 import { Redirect } from 'react-router-dom';
+import './LoginForm.css';
+
 
 const LoginForm = (props) => {
     const dispatch = useDispatch();
@@ -9,8 +11,6 @@ const LoginForm = (props) => {
     const [credential, setCredential] = useState();
     const [password, setPassword] = useState();
     const [errors, setErrors] = useState([]);
-
-    // if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -31,14 +31,17 @@ const LoginForm = (props) => {
     
     return (
         <>
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-            <form onSubmit={handleSubmit}>
-                <input type="text"  placeholder="username" value={credential} onChange={(e) => setCredential(e.target.value)}/>
-                <input type="password"  placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <div className="login-div">
+            <div>Welcome Back!</div>
+            <form onSubmit={handleSubmit} className="login-form">
+                <input type="text"  placeholder="Your Username" value={credential} onChange={(e) => setCredential(e.target.value)}/>
+                <input type="password"  placeholder="Your Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <ul>
+                    {errors.map(error => <li key={error}>{error}</li>)}
+                </ul>
                 <input type="submit" value="Log In" />
             </form>
+        </div>
         </>
     )
     

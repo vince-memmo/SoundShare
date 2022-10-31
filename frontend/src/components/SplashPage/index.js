@@ -3,15 +3,19 @@ import { NavLink } from 'react-router-dom';
 import './SplashPage.css';
 import splashImg1 from '../../assets/pics/carousel1.jpeg'
 import splashImg3 from '../../assets/pics/carousel3.jpeg'
+import { useSelector } from "react-redux"
 import SwiperCore, {Navigation, Pagination, Autoplay} from 'swiper'
+import { Redirect } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-//import 'swiper/css/autoplay'
 
 
 const SplashPage = () => {
     SwiperCore.use([Pagination, Autoplay])
+    const sessionUser = useSelector(state => state.session.user);
+    if (sessionUser) return <Redirect to="/discover" />;
+
 
     const swiperSlides = [splashImg1, splashImg3]
     const slide = []
