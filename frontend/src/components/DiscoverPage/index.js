@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchTracks } from "../../store/tracks";
-import { useDispatch } from "react-redux";
 import { getTracks } from "../../store/tracks";
 
 

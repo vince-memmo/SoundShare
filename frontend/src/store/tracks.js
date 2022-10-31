@@ -36,6 +36,29 @@ export const fetchTracks = () => async (dispatch) => {
     }
 }
 
+export const fetchUserTracks = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/users/${userId}/tracks`);
+  if (response.ok) {
+    const tracks = await response.json();
+    dispatch(receiveTracks(tracks));
+  }
+}
+
+export const createTrack = track => async (dispatch) => {
+  const response = await csrfFetch(`/api/tracks/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(track)
+  });
+
+  if (response.ok) {
+    const newTrack = await response.json();
+    dispatch(receiveTrack(newTrack));
+  }
+};
+
 const tracksReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_TRACKS:

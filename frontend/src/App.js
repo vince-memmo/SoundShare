@@ -7,6 +7,8 @@ import SplashPage from "./components/SplashPage";
 import { Swiper, SwiperSlide } from 'swiper'
 import Navigation from "./components/Navigation";
 import DiscoverPage from "./components/DiscoverPage/index.js";
+import Tracks from './components/Tracks/index'
+import TrackUploadPage from "./components/TrackForm/index.js";
 
 function App() {
   return (
@@ -15,9 +17,15 @@ function App() {
       <Route exact path="/">
           <SplashPage />
       </Route>
-      <Route path="/discover">
+      <Route exact path="/discover">
           <Navigation />
           <DiscoverPage />
+      </Route>
+      <Route path={`/:userId/tracks`}>
+          <Tracks />
+      </Route>
+      <Route path={`/:userId/upload`}>
+          <TrackUploadPage />
       </Route>
     </Switch>
     </>

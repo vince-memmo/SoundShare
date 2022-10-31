@@ -1,6 +1,6 @@
 databases:
   - name: soundshare
-    user: soundshare
+    user: vince
     plan: free
     region: oregon
 
