@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchTracks } from "../../store/tracks";
 import { getTracks } from "../../store/tracks";
+import TrackIndexItem from "../Tracks/TrackIndexItem";
 
 
 function DiscoverPage() {
@@ -19,13 +20,11 @@ function DiscoverPage() {
     
     return (
       <>
-      <ul>
-        {
-          tracks.map(track => 
-            track.name
-          )
-        }
-      </ul>
+         <ul>
+            {tracks.map(track => 
+              <TrackIndexItem track={track}/>
+              )}
+        </ul>
       </>
     )
   }

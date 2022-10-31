@@ -59,6 +59,13 @@ export const createTrack = track => async (dispatch) => {
   }
 };
 
+export const deleteTrack = (trackId) => async dispatch => {
+  const response = await csrfFetch(`/api/tracks/${trackId}`, {method: 'DELETE'})
+  if (response.ok) {
+    dispatch(removeTrack(trackId));
+  }
+}
+
 const tracksReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_TRACKS:

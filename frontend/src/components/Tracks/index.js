@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { getTracks } from "../../store/tracks";
 import { fetchUserTracks } from "../../store/tracks";
+import TrackIndexItem from "./TrackIndexItem";
 
 function Tracks() {
     const dispatch = useDispatch()
@@ -18,13 +19,9 @@ function Tracks() {
       <>
         <h1>{`${sessionUser.username}'s Songs`}</h1>
         <ul>
-          <li>
             {tracks.map(track => 
-              track.name
+              <TrackIndexItem track={track}/>
               )}
-            <button>Update</button>
-            <button>Delete</button>
-          </li>
         </ul>
         <Link to={`/${user_id}/upload`}>Add Track</Link>
       </>
