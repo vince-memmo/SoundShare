@@ -11,8 +11,7 @@ const TrackIndexItem = ({track}) => {
         <>
         <li>
             <h3>{track.name}</h3>
-            <h3>{track.audio_url}</h3>
-            <h3>{track.image_url}</h3>
+            <img src={track.photoUrl}/>
             <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button>
         </li>
         </>

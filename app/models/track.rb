@@ -23,5 +23,5 @@ class Track < ApplicationRecord
     validates :audio_url, :image_url, :artist_id, :name, presence:true
 
     belongs_to :user, foreign_key: :artist_id, class_name: :User
-
+    has_one_attached :song_file
 end

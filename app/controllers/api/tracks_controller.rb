@@ -1,5 +1,6 @@
 class Api::TracksController < ApplicationController
 
+
     def index
       if params[:user_id]
         @tracks = Track.where(tracks: {artist_id: params[:user_id]})
