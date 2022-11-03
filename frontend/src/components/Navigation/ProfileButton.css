@@ -1,0 +1,32 @@
+.menu-container {
+    /* display: ; */
+    /* flex-direction: column; */
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: 0%;
+    border: 1px solid black;
+    left: 0%;
+}
+
+.menu-button {
+    width: 100px;
+    height: 46px;
+    color: white;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+.menu-logout {
+    cursor: pointer;
+}

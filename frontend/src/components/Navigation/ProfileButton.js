@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/sessionReducer';
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import  './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const user_id = sessionUser.id
-
   
   const openMenu = () => {
     if (showMenu) return;
@@ -34,21 +34,17 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fa-solid fa-user-circle" />
-      </button>
+    <div className="menu-container">
+      <div className="menu-button" onClick={openMenu}>{sessionUser.username}</div>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
+        <div className="profile-dropdown">
+          <div>
+            <div className="menu-logout" onClick={logout}>Log Out</div>
             <Link to={`/${user_id}/tracks`}>Tracks</Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

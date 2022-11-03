@@ -12,7 +12,7 @@ function DiscoverPage() {
     const sessionUser = useSelector(state => state.session.user);
     const tracks = useSelector(getTracks)
     
-    useEffect(() => {
+    useEffect(() => { 
         dispatch(fetchTracks())
     }, [dispatch])
 

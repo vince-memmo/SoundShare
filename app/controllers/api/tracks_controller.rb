@@ -19,7 +19,6 @@ class Api::TracksController < ApplicationController
     def update
       @track = Track.find(params[:id])
       @track.name = params[:track][:name]
-      debugger
       if params[:track][:photo]
         file = File.open(params[:track][:photo])
         @track.photo.attach(io: file, filename: "updated song")

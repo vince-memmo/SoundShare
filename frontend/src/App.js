@@ -14,12 +14,12 @@ import TrackUpdatePage from './components/TrackUpdateForm/index'
 function App() {
   return (
     <>
+    <Navigation />
     <Switch>
       <Route exact path="/">
           <SplashPage />
       </Route>
       <Route exact path="/discover">
-          <Navigation />
           <DiscoverPage />
       </Route>
       <Route path={`/:userId/tracks`}>

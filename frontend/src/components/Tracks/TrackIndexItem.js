@@ -47,13 +47,14 @@ const TrackIndexItem = ({track}) => {
     return (
         <>
         <li>
-            <h3>{track.name}</h3>
+            <button className={`play-pause-${track.id}`} onClick={() => handlePlay(track)}>Play</button>
             <div className='thumbnail-container'>
                 <img className='thumbnail' src={track.photoUrl}/>
             </div>
-            <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button>
-            <button className={`play-pause-${track.id}`} onClick={() => handlePlay(track)}>Play</button>
-            <Link to={`/tracks/${track.id}/edit`}>Update Track</Link>
+            <h3>{track.name}</h3>
+            <h3>Uploader</h3>
+            {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
+            {/* <Link to={`/tracks/${track.id}/edit`}>Update Track</Link> */}
         </li>
         </>
     )

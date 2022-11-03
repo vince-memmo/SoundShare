@@ -23,7 +23,6 @@ function Tracks() {
               <TrackIndexItem track={track}/>
               )}
         </ul>
-        <Link to={`/${user_id}/upload`}>Add Track</Link>
       </>
     );
   }
