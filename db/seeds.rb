@@ -33,22 +33,16 @@ ApplicationRecord.transaction do
 
     Track.create!({
       name: 'song1',
-      audio_url: 'song1.mp3',
-      image_url: 'song1.jpeg',
       artist_id: 1
     })
     
     Track.create!({
       name: 'song2',
-      audio_url: 'song2.mp3',
-      image_url: 'song2.jpeg',
       artist_id: 2
     })
       
     Track.create!({
       name: 'song3',
-      audio_url: 'song3.mp3',
-      image_url: 'song3.jpeg',
       artist_id: 3
     })
   end

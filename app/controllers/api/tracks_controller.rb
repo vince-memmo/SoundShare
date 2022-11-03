@@ -1,5 +1,5 @@
 class Api::TracksController < ApplicationController
-
+  wrap_parameters include: Track.attribute_names + ['photo', 'song', 'artistId']
 
     def index
       if params[:user_id]
@@ -10,10 +10,29 @@ class Api::TracksController < ApplicationController
         render :index
       end
     end
+
+    def show
+      @track = Track.find(params[:id])
+      render :show
+    end
+
+    def update
+      @track = Track.find(params[:id])
+      @track.name = params[:track][:name]
+      debugger
+      if params[:track][:photo]
+        file = File.open(params[:track][:photo])
+        @track.photo.attach(io: file, filename: "updated song")
+      end
+      if @track.save
+        render :show
+      else
+        render json: @track.errors.full_messages, status: 422
+      end
+    end
   
     def create
       @track = Track.new(track_params)
-      
       if @track.save
         render :show
       else
@@ -29,6 +48,6 @@ class Api::TracksController < ApplicationController
     private
   
     def track_params
-      params.require(:track).permit(:name, :audio_url, :image_url, :artist_id)
+      params.require(:track).permit(:name, :artist_id, :photo, :song)
     end
   end

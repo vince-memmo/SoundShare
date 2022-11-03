@@ -20,11 +20,19 @@ const receiveTracks = tracks => ({
   });
 
 export const getTracks = state => {
-  // return state?.tracks ? Object.values(state.posts) : [];
   if (state.tracks) {
     return Object.values(state.tracks)
   } else {
     return []
+  }
+}
+
+export const getTrack = trackId => state => {
+  if (state.tracks[trackId] )
+  if (state.tracks) {
+    return state.tracks[trackId]
+  } else {
+    return null
   }
 }
 
@@ -36,6 +44,14 @@ export const fetchTracks = () => async (dispatch) => {
     }
 }
 
+export const fetchTrack = (trackId) => async dispatch => {
+  const response = await fetch(`/api/tracks/${trackId}`)
+  if (response.ok) {
+      const track = await response.json()
+      dispatch(receiveTrack(track))
+  }
+}
+
 export const fetchUserTracks = (userId) => async (dispatch) => {
   const response = await csrfFetch(`/api/users/${userId}/tracks`);
   if (response.ok) {
@@ -44,13 +60,22 @@ export const fetchUserTracks = (userId) => async (dispatch) => {
   }
 }
 
-export const createTrack = track => async (dispatch) => {
+export const createTrack = track => async (dispatch) => { 
   const response = await csrfFetch(`/api/tracks/`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(track)
+    body: track
+  });
+
+  if (response.ok) {
+    const newTrack = await response.json();
+    dispatch(receiveTrack(newTrack));
+  }
+};
+
+export const updateTrack = (track, trackId) => async (dispatch) => { 
+  const response = await csrfFetch(`/api/tracks/${trackId}`, {
+    method: 'PATCH',
+    body: track
   });
 
   if (response.ok) {

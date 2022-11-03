@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import DiscoverPage from "./components/DiscoverPage/index.js";
 import Tracks from './components/Tracks/index'
 import TrackUploadPage from "./components/TrackForm/index.js";
+import TrackUpdatePage from './components/TrackUpdateForm/index'
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
       </Route>
       <Route path={`/:userId/upload`}>
           <TrackUploadPage />
+      </Route>
+      <Route path={`/tracks/:trackId/edit`}>
+          <TrackUpdatePage />
       </Route>
     </Switch>
     </>
