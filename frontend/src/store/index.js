@@ -3,11 +3,13 @@ import thunk from 'redux-thunk'
 import session from './sessionReducer'
 import tracksReducer from './tracks'
 import queueReducer from './queue'
+import playingReducer from './playing'
 
 const rootReducer = combineReducers ({
     session,
     tracks: tracksReducer,
-    queue: queueReducer
+    queue: queueReducer,
+    playing: playingReducer
 })
 
 let enhancer;

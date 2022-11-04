@@ -18,11 +18,11 @@ function Tracks() {
     return (
       <>
         <h1>{`${sessionUser.username}'s Songs`}</h1>
-        <ul>
+        <div>
             {tracks.map(track => 
               <TrackIndexItem track={track}/>
               )}
-        </ul>
+        </div>
       </>
     );
   }

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { fetchTracks } from "../../store/tracks";
 import { getTracks } from "../../store/tracks";
 import TrackIndexItem from "../Tracks/TrackIndexItem";
+import './DiscoverPage.css'
 
 
 function DiscoverPage() {
@@ -20,11 +21,16 @@ function DiscoverPage() {
     
     return (
       <>
-         <ul>
-            {tracks.map(track => 
-              <TrackIndexItem track={track}/>
-              )}
-        </ul>
+      <div className="discover-content">
+        <div className="main-carousels">
+          <div className="discover-singles-carousel">
+              {tracks.map(track => 
+                <TrackIndexItem track={track}/>
+                )}
+            </div>
+        </div>
+        <div className="discover-sidebar"></div>
+      </div>
       </>
     )
   }

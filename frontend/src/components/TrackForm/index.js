@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createTrack, updateTrack } from "../../store/tracks";
 import { useParams } from "react-router-dom";
 import { fetchTrack, getTrack } from "../../store/tracks";
+import './TrackUploadPage.css'
 
 function TrackForm() {
     const dispatch = useDispatch()
@@ -41,6 +42,7 @@ function TrackForm() {
 
     return (
       <>
+      <body className="track-form-body">
         <form onSubmit={handleSubmit}>
           <h1>"Create Track"</h1>
             <label>
@@ -50,6 +52,7 @@ function TrackForm() {
             {!trackId && <input type="file" onChange={(e) => setSongUrl(e.currentTarget.files[0])}/>}
             <input type="submit" ></input>
         </form>
+      </body>
       </>
     );
   }

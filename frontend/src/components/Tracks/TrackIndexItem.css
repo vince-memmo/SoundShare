@@ -1,4 +1,18 @@
 .thumbnail-container {
     width: 100px;
+    height: 150px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnail {
+    width: 100px;
     height: 100px;
+}
+
+.play-pause {
+    position: absolute;
+    z-index: 1;
 }

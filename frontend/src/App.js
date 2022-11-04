@@ -10,6 +10,7 @@ import DiscoverPage from "./components/DiscoverPage/index.js";
 import Tracks from './components/Tracks/index'
 import TrackUploadPage from "./components/TrackForm/index.js";
 import TrackUpdatePage from './components/TrackUpdateForm/index'
+import Player from "./components/Player/index.js";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <TrackUpdatePage />
       </Route>
     </Switch>
+    <Player />
     </>
   );
 }
