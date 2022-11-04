@@ -13,10 +13,11 @@ function Player() {
   const playing = useSelector(state => state.playing);
   const track = useSelector(getQueue)
   const dispatch = useDispatch()
-  const [prevSrc, setPrevSrc] = useState('')
+  const [currentSong, setCurrentSong] = useState({id: 'init'})
   const [src, setSrc] = useState('')
   const [paused, setPaused] = useState(true)
   const [audio, setAudio] = useState( new Audio(track.songUrl))
+  const [pauseTime, setPauseTime] = useState(0)
 
   useEffect(() => {
     if (playing) {
@@ -24,7 +25,7 @@ function Player() {
     } else { 
       pauseSong()
     }
-    changeButtons()
+    if (track.songUrl) changeButtons()
   }, [playing])
 
   const handleClick = (track) => {
@@ -38,31 +39,49 @@ function Player() {
   }
 
   const changeButtons = () => {
-    if (track.songUrl) {
+      const prevItemButton = document.querySelector(`.play-pause-${track.id}`);
       const itemButton = document.querySelector(`.play-pause-${track.id}`);
       const playButton = document.querySelector(`.player-play-pause`);
+      
       if (playButton.innerHTML === 'Play') {
         playButton.innerHTML = 'Pause'
       } else {
           playButton.innerHTML = 'Play'
       }
-      if (itemButton.innerHTML === 'Play') {
-        itemButton.innerHTML = 'Pause'
+  }
+
+  const playSong = () => {
+    if (currentSong.id !== 'init'){
+      const prevItemButton = document.querySelector(`.play-pause-${currentSong.id}`);
+      prevItemButton.innerHTML = 'Play'
+    }
+    if (track.id) {
+      const itemButton = document.querySelector(`.play-pause-${track.id}`);
+      itemButton.innerHTML = 'Pause'
+      if (track.id === currentSong.id) {
+        audio.src = track.songUrl
+        audio.currentTime = pauseTime
+        setCurrentSong(track)
+        audio.play()
       } else {
-        itemButton.innerHTML = 'Play'
+        audio.src = track.songUrl
+        setCurrentSong(track)
+        audio.play()
       }
     }
   }
 
-  const playSong = () => {
-    if (track.songUrl) {
-      audio.src = track.songUrl
-      audio.play()
-    }
-  }
-
   const pauseSong = () => {
-    audio.pause()
+    if (currentSong !== track) {
+      dispatch(receivePlaying(true))
+      // playSong()
+      // changeButtons()
+    } else {
+      const pausedItemButton = document.querySelector(`.play-pause-${currentSong.id}`);
+      pausedItemButton.innerHTML = 'Play'
+      setPauseTime(audio.currentTime)
+      audio.pause()
+    }
   }
 
   let sessionLinks;

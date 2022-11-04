@@ -11,25 +11,40 @@ import './TrackIndexItem.css'
 
 const TrackIndexItem = ({track}) => {
     const dispatch = useDispatch()
+    const playing = useSelector(state => state.playing);
     const sessionUser = useSelector(state => state.session.user);
+    let currentTrack = useSelector(state => state.queue)
     const user_id = sessionUser.id
-    // let playingTrack = false;
-    // const [prevSrc, setPrevSrc] = useState('')
-    // const [src, setSrc] = useState('')
-    // const [paused, setPaused] = useState(true)
-    // const [sound, setSound] = useState(new Howl({
-    //     src: [src],
-    //     html5:true
-    // }))
 
+    // useEffect(() => {
+    //     currentTrack = useSelector(getQueue)
+    // }, [handleClick])
     
     const handleClick = (track) => {
         const playButton = document.querySelector(`.play-pause-${track.id}`);
         if (playButton.innerHTML === 'Play') {
-            dispatch(receiveQueue(track))
-            dispatch(receivePlaying(true))
+            console.log(currentTrack)
+            if(track.id !== currentTrack.id && currentTrack.id) {
+                dispatch(receiveQueue(track))
+                dispatch(receivePlaying(false))
+            } else {
+                dispatch(receiveQueue(track))
+                dispatch(receivePlaying(true))
+            }
         } else {
             dispatch(receivePlaying(false))
+        }
+    }
+
+    const buttonCreator = (track) => {
+        if (playing && (track.id === currentTrack.id)) {
+            return (
+                <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Pause</button>
+            )
+        } else {
+            return(
+                <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Play</button>
+            )
         }
     }
 
@@ -37,8 +52,8 @@ const TrackIndexItem = ({track}) => {
         <>
         <div className='track-index-item'>
             <div className='thumbnail-container'>
-                <button className={`play-pause play-pause-${track.id}`} onClick={() => handleClick(track)}>Play</button>
-                    <img className='thumbnail' src={track.photoUrl}/>
+                {buttonCreator(track)}
+                <img className='thumbnail' src={track.photoUrl}/>
             </div>
                 <h3>{track.name}</h3>
                 <h3>Uploader</h3>
