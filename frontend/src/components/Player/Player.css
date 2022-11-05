@@ -20,12 +20,6 @@
 }
 
 .player-play-pause {
-    width: 50px;
-}
-
-.player-time {
-    background-color: white;
-    border: solid 1px grey;
     width: 200px;
 }
 

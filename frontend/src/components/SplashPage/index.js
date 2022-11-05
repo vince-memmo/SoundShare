@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-
+// import '../../../../app/assets/songs'
 
 const SplashPage = () => {
     SwiperCore.use([Pagination, Autoplay])

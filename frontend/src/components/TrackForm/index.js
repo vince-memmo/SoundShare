@@ -27,7 +27,7 @@ function TrackForm() {
     
     const handleSubmit = (e) => {
       e.preventDefault()
-      
+      debugger
       const formData = new FormData();
       formData.append('track[name]', name);
       formData.append('track[artist_id]', user_id)

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { getTracks } from "../../store/tracks";
-import { fetchUserTracks } from "../../store/tracks";
+import { fetchUserTracks, deleteTrack } from "../../store/tracks";
 import TrackIndexItem from "./TrackIndexItem";
 
 function Tracks() {
@@ -20,7 +20,10 @@ function Tracks() {
         <h1>{`${sessionUser.username}'s Songs`}</h1>
         <div>
             {tracks.map(track => 
-              <TrackIndexItem track={track}/>
+              <>
+                <TrackIndexItem track={track}/>
+                <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button>
+              </>
               )}
         </div>
       </>

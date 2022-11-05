@@ -1,23 +1,26 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useRef }  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Player.css';
-import {Howl, Howler} from 'howler';
 import { useState } from 'react';
-import { receiveQueue, getQueue } from '../../store/queue';
+import { receiveQueue, getQueue, getTrack } from '../../store/queue';
 import { useEffect } from 'react';
 import { receivePlaying } from '../../store/playing';
+import ProgressBar from './ProgressBar';
 
 function Player() {
   const sessionUser = useSelector(state => state.session.user);
   const playing = useSelector(state => state.playing);
+  const progClick = useSelector(state => state.progClick);
   const track = useSelector(getQueue)
+  // const track = useSelector(getTrack)
+  // debugger
+  const audioRef = useRef()
   const dispatch = useDispatch()
   const [currentSong, setCurrentSong] = useState({id: 'init'})
-  const [src, setSrc] = useState('')
-  const [paused, setPaused] = useState(true)
   const [audio, setAudio] = useState( new Audio(track.songUrl))
   const [pauseTime, setPauseTime] = useState(0)
+  const [percentage, setPercentage] = useState(0)
+  const [duration, setDuration] = useState(0)
 
   useEffect(() => {
     if (playing) {
@@ -28,10 +31,35 @@ function Player() {
     if (track.songUrl) changeButtons()
   }, [playing])
 
+  useEffect(() => {
+    const limitedInterval = setInterval(() => {
+      if (duration) {
+        setPercentage(audio.currentTime/duration)
+      }
+      if (!playing) {
+        clearInterval(limitedInterval);
+      }
+    }, 100);
+  }, [playing])
+
+  useEffect(() => {
+    console.log(progClick)
+    changeTime()
+  }, [progClick])
+
+  const changeTime = () => {
+    if (track.id) {
+      audio.currentTime = duration*progClick.click
+    }
+  }
+
+
   const handleClick = (track) => {
+    if (!track.id) return
     const playButton = document.querySelector(`.player-play-pause`);
+    const duration = document.getElementById(`audio-${track.id}`).duration
     if (playButton.innerHTML === 'Play') {
-        dispatch(receiveQueue(track))
+        dispatch(receiveQueue(track, duration))
         dispatch(receivePlaying(true))
     } else {
         dispatch(receivePlaying(false))
@@ -42,7 +70,6 @@ function Player() {
       const prevItemButton = document.querySelector(`.play-pause-${track.id}`);
       const itemButton = document.querySelector(`.play-pause-${track.id}`);
       const playButton = document.querySelector(`.player-play-pause`);
-      
       if (playButton.innerHTML === 'Play') {
         playButton.innerHTML = 'Pause'
       } else {
@@ -56,10 +83,10 @@ function Player() {
       prevItemButton.innerHTML = 'Play'
     }
     if (track.id) {
+      setDuration(document.getElementById(`audio-${track.id}`).duration)
       const itemButton = document.querySelector(`.play-pause-${track.id}`);
       itemButton.innerHTML = 'Pause'
       if (track.id === currentSong.id) {
-        audio.src = track.songUrl
         audio.currentTime = pauseTime
         setCurrentSong(track)
         audio.play()
@@ -74,8 +101,6 @@ function Player() {
   const pauseSong = () => {
     if (currentSong !== track) {
       dispatch(receivePlaying(true))
-      // playSong()
-      // changeButtons()
     } else {
       const pausedItemButton = document.querySelector(`.play-pause-${currentSong.id}`);
       pausedItemButton.innerHTML = 'Play'
@@ -92,7 +117,8 @@ function Player() {
           <button className='player-skip-back'>Back</button>
           <button className='player-play-pause' playValue='play' onClick={() => handleClick(track)}>Play</button>
           <button className='player-skip-forward'>For</button>
-          <div className='player-time'></div>
+            <ProgressBar percentage={percentage}/>
+            <audio id="audio" ref={audioRef} src={audio.src}></audio>
           <button className='player-volume'>Mute</button>
           <div className='player-thumbnail'></div>
         </div>
@@ -105,22 +131,3 @@ function Player() {
   );
 }
 export default Player;
-
- // const handlePlay = (track) => {
-  //     dispatch(receiveQueue(track))
-  //     if((prevSrc === track.songUrl && prevSrc !== '') && paused === false){
-  //         // sound.pause()
-  //         setPaused(!paused)
-  //     } else {
-  //         // sound._src = track.songUrl
-  //         setPaused(!paused)
-  //         playSong()
-  //     }
-  //     setPrevSrc(track.songUrl)
-  //     const playButton = document.querySelector(`.play-pause-${track.id}`);
-  //     if (playButton.innerHTML === 'Play') {
-  //         playButton.innerHTML = 'Pause'
-  //     } else {
-  //         playButton.innerHTML = 'Play'
-  //     }
-  // }

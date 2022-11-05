@@ -15,20 +15,18 @@ const TrackIndexItem = ({track}) => {
     const sessionUser = useSelector(state => state.session.user);
     let currentTrack = useSelector(state => state.queue)
     const user_id = sessionUser.id
-
-    // useEffect(() => {
-    //     currentTrack = useSelector(getQueue)
-    // }, [handleClick])
     
     const handleClick = (track) => {
-        const playButton = document.querySelector(`.play-pause-${track.id}`);
+        const playButton = document.querySelector(`.play-pause-${track.id}`)
+        const duration = document.getElementById(`audio-${track.id}`).duration
+        // debugger
         if (playButton.innerHTML === 'Play') {
             console.log(currentTrack)
             if(track.id !== currentTrack.id && currentTrack.id) {
-                dispatch(receiveQueue(track))
+                dispatch(receiveQueue(track, duration))
                 dispatch(receivePlaying(false))
             } else {
-                dispatch(receiveQueue(track))
+                dispatch(receiveQueue(track, duration))
                 dispatch(receivePlaying(true))
             }
         } else {
@@ -58,6 +56,7 @@ const TrackIndexItem = ({track}) => {
                 <h3>{track.name}</h3>
                 <h3>Uploader</h3>
         </div>
+        <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
             {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
             {/* <Link to={`/tracks/${track.id}/edit`}>Update Track</Link> */}
         </>
