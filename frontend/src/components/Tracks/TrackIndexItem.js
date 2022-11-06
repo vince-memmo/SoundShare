@@ -8,6 +8,7 @@ import {Howl, Howler} from 'howler';
 import Player, {handlePlay} from '../Player/index'
 import {playingQueue, receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
+import { receiveDuration } from '../../store/duration';
 
 const TrackIndexItem = ({track}) => {
     const dispatch = useDispatch()
@@ -19,14 +20,15 @@ const TrackIndexItem = ({track}) => {
     const handleClick = (track) => {
         const playButton = document.querySelector(`.play-pause-${track.id}`)
         const duration = document.getElementById(`audio-${track.id}`).duration
-        // debugger
         if (playButton.innerHTML === 'Play') {
             console.log(currentTrack)
             if(track.id !== currentTrack.id && currentTrack.id) {
-                dispatch(receiveQueue(track, duration))
+                dispatch(receiveDuration(duration))
+                dispatch(receiveQueue(track))
                 dispatch(receivePlaying(false))
             } else {
-                dispatch(receiveQueue(track, duration))
+                dispatch(receiveDuration(duration))
+                dispatch(receiveQueue(track))
                 dispatch(receivePlaying(true))
             }
         } else {

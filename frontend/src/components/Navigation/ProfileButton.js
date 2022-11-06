@@ -4,8 +4,11 @@ import * as sessionActions from '../../store/sessionReducer';
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import  './ProfileButton.css'
+import { useHistory } from "react-router-dom";
+
 
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
@@ -33,6 +36,14 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
+  const goToCreatePlaylist = () => {
+    history.push(`/create_playlist`)
+  }
+
+  const goToTracks = () => {
+    history.push(`/${user_id}/tracks`)
+  }
+
   return (
     <div className="menu-container">
       <div className="menu-button" onClick={openMenu}>{sessionUser.username}</div>
@@ -40,7 +51,9 @@ function ProfileButton({ user }) {
         <div className="profile-dropdown">
           <div>
             <div className="menu-logout" onClick={logout}>Log Out</div>
-            <Link to={`/${user_id}/tracks`}>Tracks</Link>
+            <div className="menu-track" onClick={goToTracks}>Tracks</div>
+            <div className="menu-create-playlist" onClick={goToCreatePlaylist}>Create Playlist</div>
+            <div className="menu-create-playlist" onClick={goToCreatePlaylist}>Playlist</div>
           </div>
         </div>
       )}

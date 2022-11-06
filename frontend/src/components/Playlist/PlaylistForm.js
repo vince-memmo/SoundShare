@@ -4,50 +4,43 @@ import { useState } from "react";
 import { createTrack, updateTrack } from "../../store/tracks";
 import { useParams } from "react-router-dom";
 import { fetchTrack, getTrack } from "../../store/tracks";
-import './TrackUploadPage.css'
+import { createPlaylist } from "../../store/playlist";
 
-function TrackForm() {
+function PlaylistForm() {
     const dispatch = useDispatch()
     const { trackId } = useParams() 
     const sessionUser = useSelector(state => state.session.user);
     const user_id = sessionUser.id
-    const formType = trackId ? "Update Post" : "Create Post"
     
       let track = {
         name: '',
-        artist_id: user_id,
+        user_id: user_id,
         photoUrl: '',
-        songUrl: ''
       }
     
     const [name, setName] = useState()
     const [photoUrl, setPhotoUrl] = useState()
-    const [songUrl, setSongUrl] = useState()
     
     const handleSubmit = (e) => {
       e.preventDefault()
       const formData = new FormData();
       formData.append('track[name]', name);
-      formData.append('track[artist_id]', user_id)
+      formData.append('track[user_id]', user_id)
       if (photoUrl) {
         formData.append('track[photo]', photoUrl);
       }
-      if (songUrl) {
-        formData.append('track[song]', songUrl);
-      }
-        dispatch(createTrack(formData))
+        dispatch(createPlaylist(formData))
     }
 
     return (
       <>
       <body className="track-form-body">
         <form onSubmit={handleSubmit}>
-          <h1>"Create Track"</h1>
+          <h1>"Create Playlist"</h1>
             <label>
-               <input placeholder="track title" type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
+               <input placeholder="playlist title" type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
             </label>
             <input type="file" onChange={(e) => setPhotoUrl(e.currentTarget.files[0])}/>
-            {!trackId && <input type="file" onChange={(e) => setSongUrl(e.currentTarget.files[0])}/>}
             <input type="submit" ></input>
         </form>
       </body>
@@ -55,4 +48,4 @@ function TrackForm() {
     );
   }
   
-  export default TrackForm;
+  export default PlaylistForm;

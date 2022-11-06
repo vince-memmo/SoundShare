@@ -6,21 +6,20 @@ import { receiveQueue, getQueue, getTrack } from '../../store/queue';
 import { useEffect } from 'react';
 import { receivePlaying } from '../../store/playing';
 import ProgressBar from './ProgressBar';
+import { receiveDuration, getDuration } from '../../store/duration';
 
 function Player() {
   const sessionUser = useSelector(state => state.session.user);
   const playing = useSelector(state => state.playing);
   const progClick = useSelector(state => state.progClick);
   const track = useSelector(getQueue)
-  // const track = useSelector(getTrack)
-  // debugger
+  const duration = useSelector(getDuration)
   const audioRef = useRef()
   const dispatch = useDispatch()
   const [currentSong, setCurrentSong] = useState({id: 'init'})
   const [audio, setAudio] = useState( new Audio(track.songUrl))
   const [pauseTime, setPauseTime] = useState(0)
   const [percentage, setPercentage] = useState(0)
-  const [duration, setDuration] = useState(0)
 
   useEffect(() => {
     if (playing) {
@@ -33,7 +32,8 @@ function Player() {
 
   useEffect(() => {
     const limitedInterval = setInterval(() => {
-      if (duration) {
+      // console.log(duration)
+      if (typeof duration === 'number') {        
         setPercentage(audio.currentTime/duration)
       }
       if (!playing) {
@@ -53,13 +53,13 @@ function Player() {
     }
   }
 
-
   const handleClick = (track) => {
     if (!track.id) return
     const playButton = document.querySelector(`.player-play-pause`);
     const duration = document.getElementById(`audio-${track.id}`).duration
     if (playButton.innerHTML === 'Play') {
-        dispatch(receiveQueue(track, duration))
+        dispatch(receiveDuration(duration))
+        dispatch(receiveQueue(track))
         dispatch(receivePlaying(true))
     } else {
         dispatch(receivePlaying(false))
@@ -67,8 +67,6 @@ function Player() {
   }
 
   const changeButtons = () => {
-      const prevItemButton = document.querySelector(`.play-pause-${track.id}`);
-      const itemButton = document.querySelector(`.play-pause-${track.id}`);
       const playButton = document.querySelector(`.player-play-pause`);
       if (playButton.innerHTML === 'Play') {
         playButton.innerHTML = 'Pause'
@@ -83,7 +81,6 @@ function Player() {
       prevItemButton.innerHTML = 'Play'
     }
     if (track.id) {
-      setDuration(document.getElementById(`audio-${track.id}`).duration)
       const itemButton = document.querySelector(`.play-pause-${track.id}`);
       itemButton.innerHTML = 'Pause'
       if (track.id === currentSong.id) {

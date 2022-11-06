@@ -1,11 +1,9 @@
 export const RECEIVE_QUEUE = 'queue/RECEIVE_QUEUE';
 export const REMOVE_QUEUE = 'queue/REMOVE_QUEUE';
 
-export const receiveQueue = (track, duration) => ({
+export const receiveQueue = (track) => ({
     type: RECEIVE_QUEUE,
     track
-    // : track,
-    // duration: duration
 });
   
 export const removeQueue = trackId => ({
@@ -19,14 +17,6 @@ export const getQueue = state => {
     } else {
       return []
     }
-}
-
-export const getTrack = state => {
-  if (state.queue) {
-    return state.queue['track']
-  } else {
-    return []
-  }
 }
 
   const queueReducer = (state = {}, action) => {

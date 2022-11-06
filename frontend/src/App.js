@@ -11,6 +11,7 @@ import Tracks from './components/Tracks/index'
 import TrackUploadPage from "./components/TrackForm/index.js";
 import TrackUpdatePage from './components/TrackUpdateForm/index'
 import Player from "./components/Player/index.js";
+import PlaylistForm from "./components/Playlist/PlaylistForm.js";
 
 function App() {
   return (
@@ -31,6 +32,12 @@ function App() {
       </Route>
       <Route path={`/tracks/:trackId/edit`}>
           <TrackUpdatePage />
+      </Route>
+      <Route path={`/playlist`}>
+          <PlaylistForm />
+      </Route>
+      <Route path={`/create_playlist`}>
+          <PlaylistForm />
       </Route>
     </Switch>
     <Player />

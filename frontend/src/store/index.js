@@ -5,13 +5,17 @@ import tracksReducer from './tracks'
 import queueReducer from './queue'
 import playingReducer from './playing'
 import progClickReducer from './progClick'
+import durationReducer from './duration'
+import playlistsReducer from './playlist'
 
 const rootReducer = combineReducers ({
     session,
     tracks: tracksReducer,
     queue: queueReducer,
     playing: playingReducer,
-    progClick: progClickReducer
+    progClick: progClickReducer,
+    duration: durationReducer,
+    playlists: playlistsReducer
 })
 
 let enhancer;

@@ -3,6 +3,7 @@
 # Table name: tracks
 #
 #  id         :bigint           not null, primary key
+#  duration   :float
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -29,6 +29,7 @@ class User < ApplicationRecord
   validates :session_token, presence:true
 
   has_many :tracks, foreign_key: :artist_id, class_name: :Track
+  has_many :playlists, foreign_key: :user_id, class_name: :Playlist
 
   def self.find_by_credentials(credential, password)
     if URI::MailTo::EMAIL_REGEXP.match(credential)
