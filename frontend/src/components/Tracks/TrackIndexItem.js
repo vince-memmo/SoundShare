@@ -10,6 +10,7 @@ import Player, {handlePlay} from '../Player/index'
 import {playingQueue, receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
 import { receiveDuration } from '../../store/duration';
+import AddToPlaylistButton from './AddToPlaylistButton';
 
 const TrackIndexItem = ({track}) => {
     const dispatch = useDispatch()
@@ -22,7 +23,6 @@ const TrackIndexItem = ({track}) => {
         const playButton = document.querySelector(`.play-pause-${track.id}`)
         const duration = document.getElementById(`audio-${track.id}`).duration
         if (playButton.innerHTML === 'Play') {
-            console.log(currentTrack)
             if(track.id !== currentTrack.id && currentTrack.id) {
                 dispatch(receiveDuration(duration))
                 dispatch(receiveQueue(track))
@@ -55,6 +55,9 @@ const TrackIndexItem = ({track}) => {
                 <div className='thumbnail-container'>
                         {buttonCreator(track)}
                     <img className='thumbnail' src={track.photoUrl}/>
+                    <div className='add-to-playlist-button'>
+                        <AddToPlaylistButton />
+                    </div>
                 </div>
                 <div className='track-info'>
                     <h3 className='track-title'>{track.name}</h3>

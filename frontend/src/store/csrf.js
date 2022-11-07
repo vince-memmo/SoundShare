@@ -1,7 +1,6 @@
 import { storeCSRFToken } from "./sessionReducer"
 
 // export const storeCSRFToken = (response) => {
-//     console.log(response.headers)
 //     const csrfToken = response.headers.get("X-CSRF-Token")
 //     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken)
 // }

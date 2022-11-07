@@ -1,27 +1,26 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchUserTracks, getPlaylists } from "../../store/playlists";
-import TrackIndexItem from "./TrackIndexItem";
+import { fetchUserPlaylists, getPlaylists } from "../../store/playlist";
+import PlaylistIndexItem from "./PlaylistIndexItem";
 
-function Tracks() {
+function Playlists() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const playlists = useSelector(getPlaylists)
-    debugger
     const user_id = sessionUser.id
     
     useEffect(() => {
       dispatch(fetchUserPlaylists(user_id))
     }, [dispatch])
-  
+
     return (
       <>
         <h1>{`${sessionUser.username}'s Songs`}</h1>
         <div>
-            {playlists.map(track => 
+            {playlists.map(playlist => 
               <>
-                <PlayIndexItem playlist={playlist}/>
+                <PlaylistIndexItem playlist={playlist}/>
                 {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
               </>
               )}
@@ -30,4 +29,4 @@ function Tracks() {
     );
   }
   
-  export default Tracks;
+  export default Playlists;

@@ -31,18 +31,12 @@ function Player() {
       pauseSong()
       if (track.songUrl) changeButtons()
     }
-    // debugger
-    const itemButton = document.querySelector(`.play-pause-${track.id}`);
-    // debugger
   }, [playing])
 
   useEffect(() => {
     const limitedInterval = setInterval(() => {
-      // debugger
       console.log(duration.time)
-      // debugger
       if (duration.time !== 0) {    
-        // debugger    
         setPercentage(audio.currentTime/duration.time)
       }
       if (!playing.active) {
@@ -52,12 +46,10 @@ function Player() {
   }, [track])
 
   useEffect(() => {
-    console.log(progClick.click)
     changeTime()
   }, [progClick])
 
   const changeTime = () => {
-    // debugger
     if (track.id) {
       audio.currentTime = duration.time*progClick.click
     }
@@ -77,7 +69,6 @@ function Player() {
   }
 
   const changeButtons = () => {
-    // debugger
       const playButton = document.querySelector(`.player-play-pause`);
       if (playButton.innerHTML === 'Play') {
         playButton.innerHTML = 'Pause'

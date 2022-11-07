@@ -14,7 +14,6 @@ export const getDuration = state => {
   }
 
   const durationReducer = (state = {time: 0}, action) => {
-    // debugger
       switch (action.type) {
         case RECEIVE_DURATION:
             state = {}

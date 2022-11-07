@@ -1,0 +1,33 @@
+.three-dots-button {
+    /* width: 5px;
+    height: 5px;
+    background: grey;
+    border-radius: 50%; */
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE0cHgiIGhlaWdodD0iNHB4IiB2aWV3Qm94PSIwIDAgMTQgNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICA8dGl0bGU+bW9yZTwvdGl0bGU+CiAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9InJnYigyNTUsIDI1NSwgMjU1KSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxjaXJjbGUgY3g9IjIiIGN5PSIyIiByPSIyIi8+CiAgICA8Y2lyY2xlIGN4PSI3IiBjeT0iMiIgcj0iMiIvPgogICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIyIiByPSIyIi8+CiAgPC9nPgo8L3N2Zz4K);
+    background-repeat: repeat-x;
+    width: 14px;
+    height: 5px;
+}
+
+.playlist-dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 110px;
+    height: 25px;
+    z-index: 3;
+    background-color: white;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 4px;
+}
+
+.menu-create-playlist {
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-weight: 100;
+    font-size: 15px;
+    z-index: 3;
+}

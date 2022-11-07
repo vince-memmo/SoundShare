@@ -19,6 +19,8 @@
 class Playlist < ApplicationRecord
     validates :name, presence:true
 
+    has_many :playlist_items, foreign_key: :playlist_id, class_name: :PlaylistItem
+
     belongs_to :user, foreign_key: :user_id, class_name: :User
     has_one_attached :photo
 end

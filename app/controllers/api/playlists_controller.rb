@@ -3,7 +3,7 @@ class Api::PlaylistsController < ApplicationController
 
     def index
       if params[:user_id]
-        @tracks = Track.where(tracks: {artist_id: params[:user_id]})
+        @playlists = Playlist.where(playlists: {user_id: params[:user_id]})
         render :index
       else
         @tracks = Track.all
@@ -47,6 +47,6 @@ class Api::PlaylistsController < ApplicationController
     private
   
     def playlist_params
-      params.require(:track).permit(:name, :user_id, :photo)
+      params.require(:playlist).permit(:name, :user_id, :photo)
     end
   end

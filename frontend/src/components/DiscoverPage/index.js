@@ -40,7 +40,7 @@ function DiscoverPage() {
           <div className="singles-carousels">
             <div className='singes-carousel-info'>
               <p className="singles-carousels-title">Charts: Top 20</p>
-              <p className="singles-carousels-bio">The most played tracks on SoundCloud this week</p>
+              <p className="singles-carousels-bio">The most played tracks on SoundShare this week</p>
             </div>
             <div className="discover-singles-carousel">
               <Swiper {...settings}
@@ -48,8 +48,7 @@ function DiscoverPage() {
                     slidesPerView={4}
                     simulateTouch={false}
                     navigation
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+
                     >
                   {tracks.map(track => 
                     <SwiperSlide>

@@ -14,9 +14,6 @@ export const getProgClick = state => {
   }
 
   const progClickReducer = (state = {}, action) => {
-    console.log(action.type)
-    console.log(action.click)
-
       switch (action.type) {
           case RECEIVE_PROGCLICK:
             return { ...action.click };

@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/sessionReducer';
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import  './ProfileButton.css'
+import  './AddToPlaylistButton.css'
 import { useHistory } from "react-router-dom";
+import PlaylistModal from "../Playlist/PlaylistModal";
 
 
-function ProfileButton({ user }) {
+function AddToPlaylistButton() {
   const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -23,41 +24,24 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = () => {
-      setShowMenu(false);
+      setShowMenu(false);   
     };
-
     document.addEventListener('click', closeMenu);
-  
+    
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+    }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
-
-  const goToCreatePlaylist = () => {
-    history.push(`/create_playlist`)
-  }
-
-  const goToTracks = () => {
-    history.push(`/${user_id}/tracks`)
-  }
-
-  const goPlaylists = () => {
-    history.push(`/playlists`)
-  }
+    const goToPlaylists = () => {
+        console.log('add to playlist')
+    }
 
   return (
     <div className="menu-container">
-      <div className="menu-button" onClick={openMenu}>{sessionUser.username}</div>
+      <div className="three-dots-button" onClick={openMenu}></div>
       {showMenu && (
-        <div className="profile-dropdown">
+        <div className="playlist-dropdown">
           <div>
-            <div className="menu-logout" onClick={logout}>Log Out</div>
-            <div className="menu-track" onClick={goToTracks}>Tracks</div>
-            <div className="menu-create-playlist" onClick={goToCreatePlaylist}>Create Playlist</div>
-            <div className="menu-create-playlist" onClick={goPlaylists}>Playlist</div>
+            <PlaylistModal />
           </div>
         </div>
       )}
@@ -65,4 +49,4 @@ function ProfileButton({ user }) {
   );
 }
 
-export default ProfileButton;
+export default AddToPlaylistButton;

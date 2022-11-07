@@ -30,6 +30,8 @@ class User < ApplicationRecord
 
   has_many :tracks, foreign_key: :artist_id, class_name: :Track
   has_many :playlists, foreign_key: :user_id, class_name: :Playlist
+  has_many :playlist_items, foreign_key: :user_id, class_name: :PlaylistItem
+
 
   def self.find_by_credentials(credential, password)
     if URI::MailTo::EMAIL_REGEXP.match(credential)

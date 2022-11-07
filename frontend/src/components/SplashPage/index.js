@@ -99,7 +99,7 @@ const SplashPage = () => {
                 <div className='line'></div>
                 </p>
                 <div className='mobile-bio'>
-                    <p className='mobile-bio-line'>SoundCloud is available on</p>
+                    <p className='mobile-bio-line'>SoundShare is available on</p>
                     <p className='mobile-bio-line'>Web, iOS, Android, Sonos,</p>
                     <p className='mobile-bio-line'>Chromecast, and Xbox One.</p>
                 </div>
