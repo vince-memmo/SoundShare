@@ -1,15 +1,76 @@
-.main-carousels {
+.discover-content {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-section {
     width: 60vw;
     height: 100vh;
-    margin-left: 10%;
     background-color: white;
-    padding-top: 150px;
-    z-index: -1;
+    padding-top: 5%;
+}
+
+.singes-carousel-info {
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+.singles-carousels-title {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-weight: 300;
+    font-size: 25px;
+    margin-bottom: 1%;
+}
+
+.singles-carousels-bio {
+    font-family: 'Roboto', sans-serif;
+    color: grey;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.singles-carousels {
+    width: 60vw;
+    height: 275px;
+}
+
+.playlists-carousel {
+    margin-top: 3%;
+    width: 60vw;
+    height: 275px;
+}
+
+.singles-carousel-border {
+    margin-top: 2%;
+    border-bottom: .5px solid rgba(128, 128, 128, 0.229);
+    width: 90%;
+    margin-left: 5%;
 }
 
 .discover-singles-carousel {
-    display: flex;
-    width: 100vw;
-    height: 300px;
-    padding-left: 30px;
+    width: 60vw;
+}
+
+.discover-sidebar {
+    width: 30vw;
+    border-left: .5px solid rgba(128, 128, 128, 0.5);
+    height: 100vh;
+    background-color: white;
+    padding-top: 150px;
+    z-index: 1;
+}
+
+.left-panel {
+    width: 5vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: #F2F2F2;
+}
+
+.right-panel {
+    width: 5vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: #F2F2F2;
 }

@@ -110,15 +110,15 @@ function Player() {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <div className='player-controls'>
-          <button className='player-skip-back'>Back</button>
-          <button className='player-play-pause' playValue='play' onClick={() => handleClick(track)}>Play</button>
-          <button className='player-skip-forward'>For</button>
-            <ProgressBar percentage={percentage}/>
-            <audio id="audio" ref={audioRef} src={audio.src}></audio>
-          <button className='player-volume'>Mute</button>
-          <div className='player-thumbnail'></div>
-        </div>
+          <div className='player-controls'>
+            <button className='player-skip-back'>Back</button>
+            <button className='player-play-pause' playValue='play' onClick={() => handleClick(track)}>Play</button>
+            <button className='player-skip-forward'>For</button>
+              <ProgressBar percentage={percentage}/>
+              <audio id="audio" ref={audioRef} src={audio.src}></audio>
+            <button className='player-volume'>Mute</button>
+            <div className='player-thumbnail'></div>
+          </div>
       </>
     );
   }

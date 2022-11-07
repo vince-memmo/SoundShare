@@ -1,18 +1,45 @@
-.thumbnail-container {
-    width: 100px;
-    height: 150px;
+.track-index-item {
+    width: 150px;
+    height: 180px;
     margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.thumbnail-container {
+    width: 150px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .thumbnail {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .play-pause {
     position: absolute;
     z-index: 1;
+}
+
+.track-info {
+    width: 150px;
+    height: 30px;
+    margin-top: 2%;
+}
+
+.track-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.uploader-name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+    color: grey;
 }

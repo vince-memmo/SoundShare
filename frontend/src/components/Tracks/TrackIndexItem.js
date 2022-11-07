@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTrack } from '../../store/tracks';
 import { receiveQueue, getQueue } from '../../store/queue';
@@ -50,15 +51,19 @@ const TrackIndexItem = ({track}) => {
 
     return (
         <>
-        <div className='track-index-item'>
-            <div className='thumbnail-container'>
-                {buttonCreator(track)}
-                <img className='thumbnail' src={track.photoUrl}/>
+            <div className='track-index-item'>
+                <div className='thumbnail-container'>
+                    <div className={`button-container button-container-${track.id}`}>
+                        {buttonCreator(track)}
+                    </div>
+                    <img className='thumbnail' src={track.photoUrl}/>
+                </div>
+                <div className='track-info'>
+                    <h3 className='track-title'>{track.name}</h3>
+                    <h3 className='uploader-name'>Uploader</h3>
+                </div>
             </div>
-                <h3>{track.name}</h3>
-                <h3>Uploader</h3>
-        </div>
-        <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
+            <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
             {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
             {/* <Link to={`/tracks/${track.id}/edit`}>Update Track</Link> */}
         </>

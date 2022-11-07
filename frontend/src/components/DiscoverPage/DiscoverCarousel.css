@@ -1,0 +1,16 @@
+/* .swiper-container {
+    width: 500px;
+    height: 300px;
+} */
+
+.swiper-wrapper {
+    list-style-type: none;
+    padding-inline-start: 0;
+    align-items: center;
+    margin: 0;
+}
+
+.swiper-slide swiper-slide-active {
+    padding-inline-start: 0;
+    margin: 0;
+}

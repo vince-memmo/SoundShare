@@ -1,0 +1,77 @@
+.splash-mobile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85vw;
+    margin: -15vh 7.5vw;
+    height: 400px;
+}
+
+.phone-image {
+    background-image: url(https://a-v2.sndcdn.com/assets/images/never_stop_listening@2x-ae7903ca.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 200px;
+}
+
+.mobile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    width: 403.9px;
+    
+}
+
+.never-stop-listening {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.line {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background-image: linear-gradient(90deg,#7d01a1,#f30 50%,#f50);
+    margin-top: 15px;
+}
+
+.mobile-bio {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+    left: 0%;
+}
+
+.mobile-bio-line {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.mobile-links {
+    margin-top: 8%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.first-image {
+    background-image: url(https://a-v2.sndcdn.com/assets/images/appstore_badge@en_2x-5a6e21e0.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 110px;
+    height: 60px;
+}
+
+.second-image {
+    background-image: url(https://a-v2.sndcdn.com/assets/images/google_play_badge@en_2x-ad41a4d7.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 70px;
+    margin-left: 5%;
+}

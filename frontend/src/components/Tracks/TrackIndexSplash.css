@@ -1,0 +1,22 @@
+.splash-index-item {
+    width: 200px;
+    height: 210px;
+}
+
+.splash-thumbnail {
+    width: 150px;
+    height: 150px;
+}
+
+.track-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.uploader-name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+    color: grey;
+}
