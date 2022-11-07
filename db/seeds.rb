@@ -8,10 +8,10 @@
 
 
 ApplicationRecord.transaction do 
-    User.destroy_all
-    ApplicationRecord.connection.reset_pk_sequence!('users')
     Track.destroy_all
     ApplicationRecord.connection.reset_pk_sequence!('tracks')
+    User.destroy_all
+    ApplicationRecord.connection.reset_pk_sequence!('users')
   
     # Seed Users
 
@@ -29,20 +29,4 @@ ApplicationRecord.transaction do
       }) 
     end
 
-    # Seed Users
-
-    Track.create!({
-      name: 'song1',
-      artist_id: 1
-    })
-    
-    Track.create!({
-      name: 'song2',
-      artist_id: 2
-    })
-      
-    Track.create!({
-      name: 'song3',
-      artist_id: 3
-    })
   end
