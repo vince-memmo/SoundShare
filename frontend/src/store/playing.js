@@ -9,10 +9,10 @@ export const getPlaying = state => {
       return state.queue
   }
 
-  const playingReducer = (state = {}, action) => {
+  const playingReducer = (state = {active: false}, action) => {
         switch (action.type) {
           case RECEIVE_PLAYING:
-            return action.playing
+            return {active: action.playing}
         default:
             return state;
     }

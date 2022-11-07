@@ -22,34 +22,44 @@ function Player() {
   const [percentage, setPercentage] = useState(0)
 
   useEffect(() => {
-    if (playing) {
+    
+    if (playing.active) {
       playSong()
+      const playButton = document.querySelector(`.player-play-pause`);
+      if (track.songUrl && playButton.innerHTML !== 'Pause') changeButtons()
     } else { 
       pauseSong()
+      if (track.songUrl) changeButtons()
     }
-    if (track.songUrl) changeButtons()
+    // debugger
+    const itemButton = document.querySelector(`.play-pause-${track.id}`);
+    // debugger
   }, [playing])
 
   useEffect(() => {
     const limitedInterval = setInterval(() => {
-      // console.log(duration)
-      if (typeof duration === 'number') {        
-        setPercentage(audio.currentTime/duration)
+      // debugger
+      console.log(duration.time)
+      // debugger
+      if (duration.time !== 0) {    
+        // debugger    
+        setPercentage(audio.currentTime/duration.time)
       }
-      if (!playing) {
+      if (!playing.active) {
         clearInterval(limitedInterval);
       }
     }, 100);
-  }, [playing])
+  }, [track])
 
   useEffect(() => {
-    console.log(progClick)
+    console.log(progClick.click)
     changeTime()
   }, [progClick])
 
   const changeTime = () => {
+    // debugger
     if (track.id) {
-      audio.currentTime = duration*progClick.click
+      audio.currentTime = duration.time*progClick.click
     }
   }
 
@@ -67,6 +77,7 @@ function Player() {
   }
 
   const changeButtons = () => {
+    // debugger
       const playButton = document.querySelector(`.player-play-pause`);
       if (playButton.innerHTML === 'Play') {
         playButton.innerHTML = 'Pause'

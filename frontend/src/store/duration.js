@@ -13,11 +13,12 @@ export const getDuration = state => {
     }
   }
 
-  const durationReducer = (state = {}, action) => {
+  const durationReducer = (state = {time: 0}, action) => {
     // debugger
       switch (action.type) {
         case RECEIVE_DURATION:
-            return action.duration;
+            state = {}
+            return {time: action.duration};
         default:
             return state;
     }

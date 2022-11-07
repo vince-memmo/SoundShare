@@ -53,9 +53,7 @@ const TrackIndexItem = ({track}) => {
         <>
             <div className='track-index-item'>
                 <div className='thumbnail-container'>
-                    <div className={`button-container button-container-${track.id}`}>
                         {buttonCreator(track)}
-                    </div>
                     <img className='thumbnail' src={track.photoUrl}/>
                 </div>
                 <div className='track-info'>
