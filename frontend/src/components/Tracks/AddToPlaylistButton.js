@@ -1,52 +1,51 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/sessionReducer';
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import  './AddToPlaylistButton.css'
-import { useHistory } from "react-router-dom";
-import PlaylistModal from "../Playlist/PlaylistModal";
+// import React, { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from 'react-redux';
+// import * as sessionActions from '../../store/sessionReducer';
+// import { Link } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
+// import  './AddToPlaylistButton.css'
+// import { useHistory } from "react-router-dom";
+// import PlaylistModal from "../Playlist/PlaylistModal";
 
 
-function AddToPlaylistButton() {
-  const history = useHistory()
-  const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  const sessionUser = useSelector(state => state.session.user);
-  const user_id = sessionUser.id
+// function AddToPlaylistButton() {
+//   const history = useHistory()
+//   const dispatch = useDispatch();
+//   const [showMenu, setShowMenu] = useState(false);
+//   const sessionUser = useSelector(state => state.session.user);
+//   const user_id = sessionUser.id
   
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+//   const openMenu = () => {
+//     if (showMenu) return;
+//     setShowMenu(true);
+//   };
   
-  useEffect(() => {
-    if (!showMenu) return;
+//   useEffect(() => {
+//     if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);   
-    };
-    document.addEventListener('click', closeMenu);
+//     const closeMenu = () => {
+//       setShowMenu(false);   
+//     };
+//     document.addEventListener('click', closeMenu);
     
-    return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+//     return () => document.removeEventListener("click", closeMenu);
+//     }, [showMenu]);
 
-    const goToPlaylists = () => {
-        console.log('add to playlist')
-    }
+//     const goToPlaylists = () => {
+//         console.log('add to playlist')
+//     }
 
-  return (
-    <div className="menu-container">
-      <div className="three-dots-button" onClick={openMenu}></div>
-      {showMenu && (
-        <div className="playlist-dropdown">
-          <div>
-            <PlaylistModal />
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div className="menu-container">
+//       <div className="three-dots-button" onClick={openMenu}>
+//       {showMenu && (
+//           <div>
+//             <PlaylistModal />
+//           </div>
+//       )}
+//       </div>
+//     </div>
+//   );
+// }
 
-export default AddToPlaylistButton;
+// export default AddToPlaylistButton;

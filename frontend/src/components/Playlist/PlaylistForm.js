@@ -24,10 +24,10 @@ function PlaylistForm() {
     const handleSubmit = (e) => {
       e.preventDefault()
       const formData = new FormData();
-      formData.append('track[name]', name);
-      formData.append('track[user_id]', user_id)
+      formData.append('playlist[name]', name);
+      formData.append('playlist[user_id]', user_id)
       if (photoUrl) {
-        formData.append('track[photo]', photoUrl);
+        formData.append('playlist[photo]', photoUrl);
       }
         dispatch(createPlaylist(formData))
     }

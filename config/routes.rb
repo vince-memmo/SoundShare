@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: :create do
       resources :tracks, only: [:index]
       resources :playlists, only: [:index]
+      resources :playlist_items, only: [:index]
     end
 
     resource :session, only: [:show, :create, :destroy]

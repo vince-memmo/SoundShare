@@ -11,6 +11,7 @@ import {playingQueue, receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
 import { receiveDuration } from '../../store/duration';
 import AddToPlaylistButton from './AddToPlaylistButton';
+import PlaylistModal from '../Playlist/PlaylistModal';
 
 const TrackIndexItem = ({track}) => {
     const dispatch = useDispatch()
@@ -56,7 +57,7 @@ const TrackIndexItem = ({track}) => {
                         {buttonCreator(track)}
                     <img className='thumbnail' src={track.photoUrl}/>
                     <div className='add-to-playlist-button'>
-                        <AddToPlaylistButton />
+                        <PlaylistModal trackId={track.id}/>
                     </div>
                 </div>
                 <div className='track-info'>

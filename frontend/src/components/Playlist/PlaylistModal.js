@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/LoginModal';
 import Playlists from '.';
-import '../LoginFormModal'
+import './PlaylistModal.css'
 
-function PlaylistModal() {
+function PlaylistModal({trackId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className="login-button" onClick={() => setShowModal(true)}>Add To Playlist</button>
+      <button className=".three-dots-button" onClick={() => setShowModal(true)}></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <Playlists />
+          <Playlists trackId={trackId}/>
         </Modal>
       )}
     </>
