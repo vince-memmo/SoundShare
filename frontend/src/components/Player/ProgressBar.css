@@ -1,6 +1,6 @@
  .range {
     -webkit-appearance: none;
-    width: 300px;
+    width: 40vw;
     cursor: pointer;
     background-color: #FF5500;
     height: 4px;

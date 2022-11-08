@@ -20,6 +20,7 @@ function Player() {
   const [audio, setAudio] = useState( new Audio(track.songUrl))
   const [pauseTime, setPauseTime] = useState(0)
   const [percentage, setPercentage] = useState(0)
+  let limitedInterval;
 
   useEffect(() => {
     
@@ -34,16 +35,16 @@ function Player() {
   }, [playing])
 
   useEffect(() => {
-    const limitedInterval = setInterval(() => {
-      console.log(duration.time)
-      if (duration.time !== 0) {    
-        setPercentage(audio.currentTime/duration.time)
-      }
-      if (!playing.active) {
-        clearInterval(limitedInterval);
-      }
-    }, 100);
-  }, [track])
+    if (playing.active) {
+      limitedInterval = setInterval(() => {
+        if (duration.time !== 0) {    
+          setPercentage(audio.currentTime/duration.time)
+        }
+      }, 100);
+    }
+    return () => clearInterval(limitedInterval);
+
+  }, [playing])
 
   useEffect(() => {
     changeTime()

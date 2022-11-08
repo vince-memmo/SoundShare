@@ -2,13 +2,9 @@ class Api::PlaylistItemsController < ApplicationController
     wrap_parameters include: Track.attribute_names + ['photo', 'song', 'artistId']
   
       def index
-        if params[:user_id]
-          @playlists = Playlist.where(playlists: {user_id: params[:user_id]})
-          render :index
-        else
-          @tracks = Track.all
-          render :index
-        end
+        params[:playlist_id]
+        @playlist_items = PlaylistItem.where(playlist_items: {playlist_id: params[:playlist_id]})
+        render :index
       end
   
       def show
@@ -31,7 +27,6 @@ class Api::PlaylistItemsController < ApplicationController
       end
     
       def create
-        debugger
         @playlist_item = PlaylistItem.new(playlist_item_params)
         if @playlist_item.save
           render :show

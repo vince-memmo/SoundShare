@@ -13,6 +13,8 @@ import TrackUpdatePage from './components/TrackUpdateForm/index'
 import Player from "./components/Player/index.js";
 import PlaylistForm from "./components/Playlist/PlaylistForm.js";
 import Playlists from "./components/Playlist/index.js";
+import Library from "./components/Library/index.js";
+import PlaylistShowPage from "./components/Playlist/PlaylistShowPage.js";
 
 
 function App() {
@@ -38,16 +40,23 @@ function App() {
       <Route path={`/playlist`}>
           <PlaylistForm />
       </Route>
-      <Route path={`/playlists`}>
+      <Route exact path={`/playlists`}>
           <Playlists />
       </Route>
       <Route path={`/create_playlist`}>
           <PlaylistForm />
+      </Route>
+      <Route path={`/library`}>
+          <Library />
+      </Route>
+      <Route path={`/playlists/:playlistId`}>
+          <PlaylistShowPage />
       </Route>
     </Switch>
     <Player />
     </>
   );
 }
+
 
 export default App;

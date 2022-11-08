@@ -17,7 +17,7 @@ function Navigation() {
             <div className='nav-left-elements'>
               <div className='nav-logo'></div>
               <NavLink exact to="/"><p className='home-button'>Home</p></NavLink>
-              <Link ><p className='library-button'>Library</p></Link>
+              <Link to={`/library`}><p className='library-button'>Library</p></Link>
             </div>
             <div className='nav-searchbar-container'>
               <input className='nav-searchbar' placeholder='Search' type="search"></input>

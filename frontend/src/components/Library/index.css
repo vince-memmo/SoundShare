@@ -1,0 +1,29 @@
+.library-body {
+    width: 80vw;
+    height: 100vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    background-color: white;
+}
+
+.headers {
+    margin-left: 3%;
+    padding-top: 7%;
+    width: 30vw;
+    height: 5vh;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    justify-content: space-between  ;
+}
+
+.header-divider {
+    margin-left: 3%;
+    width: 75vw;
+    border-bottom: rgba(211, 211, 211, 0.5) 1px solid;
+}
+
+.display-container {
+    margin-left: 3%;
+}

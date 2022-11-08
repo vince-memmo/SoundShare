@@ -7,6 +7,8 @@ import playingReducer from './playing'
 import progClickReducer from './progClick'
 import durationReducer from './duration'
 import playlistsReducer from './playlist'
+import playlistItemsReducer from './playlist_items'
+import currentPlaylistTracksReducer from './currentPlaylistTracks'
 
 const rootReducer = combineReducers ({
     session,
@@ -15,7 +17,9 @@ const rootReducer = combineReducers ({
     playing: playingReducer,
     progClick: progClickReducer,
     duration: durationReducer,
-    playlists: playlistsReducer
+    playlists: playlistsReducer,
+    playlistItems: playlistItemsReducer,
+    currentPlaylistTracks: currentPlaylistTracksReducer
 })
 
 let enhancer;

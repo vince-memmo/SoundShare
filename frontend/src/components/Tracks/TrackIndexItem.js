@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTrack } from '../../store/tracks';
-import { receiveQueue, getQueue } from '../../store/queue';
-import { useState } from 'react';
-import {Howl, Howler} from 'howler';
-import Player, {handlePlay} from '../Player/index'
+import { receiveQueue } from '../../store/queue';
 import {playingQueue, receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
 import { receiveDuration } from '../../store/duration';

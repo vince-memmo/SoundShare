@@ -4,7 +4,7 @@ export const RECEIVEPLAYLISTITEMS = 'playlist_items/RECEIVEPLAYLIST_ITEMS';
 export const RECEIVEPLAYLISTITEM = 'playlists/RECEIVEPLAYLIST_ITEM';
 export const REMOVEPLAYLISTITEM = 'playlists/RECEMOVEPLAYLIST_ITEM';
 
-const receivePlaylists = playlistItems => ({
+const receivePlaylistItems = playlistItems => ({
     type: RECEIVEPLAYLISTITEMS,
     playlistItems
 });
@@ -30,6 +30,14 @@ const receivePlaylists = playlistItems => ({
         })
     })
 }
+
+export const fetchPlaylistItems = (playlistId) => async dispatch => {
+    const response = await fetch(`/api/playlists/${playlistId}/playlist_items`)
+    if (response.ok) {
+        const playlistItems = await response.json()
+        dispatch(receivePlaylistItems(playlistItems))
+    }
+  }
 
 const playlistItemsReducer = (state = {}, action) => {
     switch (action.type) {

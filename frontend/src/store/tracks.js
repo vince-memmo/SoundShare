@@ -1,4 +1,5 @@
 import csrfFetch from '../store/csrf';
+import { receiveCurrentPlaylistTrack } from './currentPlaylistTracks';
 
 export const RECEIVE_TRACKS = 'tracks/RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'tracks/RECEIVE_TRACK';
@@ -49,6 +50,14 @@ export const fetchTrack = (trackId) => async dispatch => {
   if (response.ok) {
       const track = await response.json()
       dispatch(receiveTrack(track))
+  }
+}
+
+export const fetchTrackForPlaylist = (trackId) => async dispatch => {
+  const response = await fetch(`/api/tracks/${trackId}`)
+  if (response.ok) {
+    const track = await response.json()
+      dispatch(receiveCurrentPlaylistTrack(track))
   }
 }
 
