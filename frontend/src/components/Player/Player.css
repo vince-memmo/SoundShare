@@ -26,6 +26,13 @@
     background-repeat: no-repeat;
 }
 
+.player-pause {
+    /* display: none; */
+    width: 200px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0iIzMzMyIgZD0iTTYgMTloNFY1SDZ2MTR6bTgtMTR2MTRoNFY1aC00eiIvPjwvc3ZnPgo=);
+    background-repeat: no-repeat;
+}
+
 .player-thumbnail {
     background-color: white;
     border: solid 1px grey;

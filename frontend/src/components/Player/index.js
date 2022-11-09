@@ -26,8 +26,8 @@ function Player() {
     
     if (playing.active) {
       playSong()
-      const playButton = document.querySelector(`.player-play-pause`);
-      if (track.songUrl && playButton.innerHTML !== 'Pause') changeButtons()
+      const playButton = document.getElementById(`play-pause-button`);
+      if (track.songUrl && playButton.className !== 'player-pause') changeButtons()
     } else { 
       pauseSong()
       if (track.songUrl) changeButtons()
@@ -58,9 +58,9 @@ function Player() {
 
   const handleClick = (track) => {
     if (!track.id) return
-    const playButton = document.querySelector(`.player-play-pause`);
+    const playButton = document.getElementById(`play-pause-button`);
     const duration = document.getElementById(`audio-${track.id}`).duration
-    if (playButton.innerHTML === 'Play') {
+    if (playButton.className === 'player-play') {
         dispatch(receiveDuration(duration))
         dispatch(receiveQueue(track))
         dispatch(receivePlaying(true))
@@ -70,11 +70,11 @@ function Player() {
   }
 
   const changeButtons = () => {
-      const playButton = document.querySelector(`.player-play-pause`);
-      if (playButton.innerHTML === 'Play') {
-        playButton.innerHTML = 'Pause'
+      const playButton = document.getElementById(`play-pause-button`);
+      if (playButton.className === 'player-play') {
+        playButton.className = 'player-pause'
       } else {
-          playButton.innerHTML = 'Play'
+          playButton.className = 'player-play'
       }
   }
 
@@ -115,7 +115,7 @@ function Player() {
       <>
           <div className='player-controls'>
             <button className='player-skip-back'>Back</button>
-            <button className='player-play-pause' playValue='play' onClick={() => handleClick(track)}>Play</button>
+            <div className='player-play' id='play-pause-button' onClick={() => handleClick(track)}></div>
             <button className='player-skip-forward'>For</button>
               <ProgressBar percentage={percentage}/>
               <audio id="audio" ref={audioRef} src={audio.src}></audio>
