@@ -59,7 +59,8 @@
     background-repeat: no-repeat;
 }
 
-.fa-solid {
-    color: rgba(211, 211, 211, 0.49);
+.fa-trash {
+    /* color: rgba(211, 211, 211, 0.49); */
     cursor: pointer;
+    color: lightgray;
 }

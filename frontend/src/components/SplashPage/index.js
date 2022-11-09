@@ -78,6 +78,7 @@ const SplashPage = () => {
                     >
                     {slide}
                 </Swiper> */}
+                
         </section>
         <section className='splash-teaser'>
             <p className='trending-tracks-title'>Trending for free in the SoundShare community</p>

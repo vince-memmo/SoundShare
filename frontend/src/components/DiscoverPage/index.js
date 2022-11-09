@@ -44,7 +44,7 @@ function DiscoverPage() {
             </div>
             <div className="discover-singles-carousel">
               <Swiper {...settings}
-                    loop={true}
+                    loop={false}
                     slidesPerView={4}
                     simulateTouch={false}
                     navigation

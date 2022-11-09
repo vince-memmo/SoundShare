@@ -27,3 +27,15 @@
 .display-container {
     margin-left: 3%;
 }
+
+.library-playlists-button {
+    cursor: pointer;
+}
+
+.library-tracks-button {
+    cursor: pointer;
+}
+
+.library-likes-button {
+    cursor: pointer;
+}

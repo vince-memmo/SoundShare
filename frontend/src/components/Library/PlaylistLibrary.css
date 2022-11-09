@@ -1,7 +1,5 @@
-.playlists-container {
-    width: 80vw;
-    height: 100vh;
-    margin: 0 10vw;
-    margin-top: 46px;
-    background-color: white;
+.library-playlists-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    margin-top: 2%;
 }

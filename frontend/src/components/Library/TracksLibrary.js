@@ -5,7 +5,8 @@ import { fetchUserPlaylists, getPlaylists } from "../../store/playlist";
 import PlaylistIndexLibrary from "../Playlist/PlaylistIndexLibrary";
 import { createPlaylistItem } from "../../store/playlist_items";
 import './index.css'
-import './PlaylistLibrary.css'
+import './TracksLibrary.css'
+import TracksIndexLibrary from '../Tracks/TracksIndexLibrary'
 
 function PlaylistLibrary() {
     const dispatch = useDispatch()
@@ -23,7 +24,7 @@ function PlaylistLibrary() {
         <div className="library-playlists-container">
             {playlists.map(playlist => 
               <>
-                <PlaylistIndexLibrary playlist={playlist}/>
+                <TracksIndexLibrary playlist={playlist}/>
               </>
               )}
         </div>

@@ -8,7 +8,7 @@ function PlaylistModal({trackId}) {
 
   return (
     <>
-      <button className=".three-dots-button" onClick={() => setShowModal(true)}></button>
+      <i  className="fa-solid fa-ellipsis three-dots-button" onClick={() => setShowModal(true)}></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <Playlists trackId={trackId}/>

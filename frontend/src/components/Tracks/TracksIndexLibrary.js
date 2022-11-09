@@ -45,19 +45,20 @@ const TrackIndexItem = ({track}) => {
             
     return (
         <>
-            <div className='track-index-item'>
-                <div className='thumbnail-container'>
+        <p>Tracks Library</p>
+            {/* <div className='track-library-index-item'>
+                <div className='library-thumbnail-container'>
                         {buttonCreator(track)}
-                    <img className='thumbnail' src={track.photoUrl}/>
+                    <img className='library-thumbnail' src={track.photoUrl}/>
                         <PlaylistModal trackId={track.id}/>
                 </div>
                 <div className=''></div>
-                <div className='track-info'>
+                <div className='library-track-info'>
                     <h3 className='track-title'>{track.name}</h3>
                     <h3 className='uploader-name'>Uploader</h3>
                 </div>
             </div>
-            <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
+            <audio id={`audio-${track.id}`}src={track.songUrl}></audio> */}
             {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
             {/* <Link to={`/tracks/${track.id}/edit`}>Update Track</Link> */}
         </>
