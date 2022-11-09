@@ -34,10 +34,10 @@ function PlaylistShowPage() {
       <>
       <div className="playlist-show-body">
         <div>Playlist 1</div>
-        <div>
+        <div className="playlist-items">
             {Object.values(tracks).map(track => 
               <>
-                <TrackIndexItem track={track}/>
+                <PlaylistItemIndex track={track} trackId={track.id}/>
               </>
             )}
         </div>

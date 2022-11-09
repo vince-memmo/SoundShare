@@ -53,11 +53,11 @@ export const fetchTrack = (trackId) => async dispatch => {
   }
 }
 
-export const fetchTrackForPlaylist = (trackId) => async dispatch => {
+export const fetchTrackForPlaylist = (trackId, playlistItemId) => async dispatch => {
   const response = await fetch(`/api/tracks/${trackId}`)
   if (response.ok) {
     const track = await response.json()
-      dispatch(receiveCurrentPlaylistTrack(track))
+      dispatch(receiveCurrentPlaylistTrack(track, playlistItemId))
   }
 }
 

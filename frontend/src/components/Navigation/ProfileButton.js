@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import  './ProfileButton.css'
 import { useHistory } from "react-router-dom";
+import { receivePlaying } from "../../store/playing";
 
 
 function ProfileButton({ user }) {
@@ -33,6 +34,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
+    dispatch(receivePlaying(false))
     dispatch(sessionActions.logout());
   };
 

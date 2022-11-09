@@ -9,7 +9,7 @@ export const receiveCurrentPlaylistTracks = tracks => ({
     tracks
 });
   
-export const receiveCurrentPlaylistTrack = track => ({
+export const receiveCurrentPlaylistTrack = (track) => ({
   type: RECEIVE_CURRENTPLAYLISTTRACK,
   track
 });
@@ -23,7 +23,7 @@ const currentPlaylistTracksReducer = (state = {}, action) => {
     case RECEIVE_CURRENTPLAYLISTTRACKS:
       return { ...action.playlists };
     case RECEIVE_CURRENTPLAYLISTTRACK:
-      return { ...state, [action.track.id]: action.track };
+      return { ...state, [action.track.id]: action.track};
     case REMOVE_CURRENTPLAYLISTTRACKS:
       const newState = { ...state };
       return newState;

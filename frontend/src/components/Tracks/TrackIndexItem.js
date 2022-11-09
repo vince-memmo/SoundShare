@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { receiveQueue } from '../../store/queue';
-import {playingQueue, receivePlaying} from '../../store/playing'
+import {receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
 import { receiveDuration } from '../../store/duration';
-import AddToPlaylistButton from './AddToPlaylistButton';
 import PlaylistModal from '../Playlist/PlaylistModal';
 
 const TrackIndexItem = ({track}) => {

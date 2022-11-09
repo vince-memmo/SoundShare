@@ -37,7 +37,14 @@ export const fetchPlaylistItems = (playlistId) => async dispatch => {
         const playlistItems = await response.json()
         dispatch(receivePlaylistItems(playlistItems))
     }
-  }
+}
+
+export const deletePlaylistItem = (trackId, playlistId) => async dispatch => {
+    const response = await csrfFetch(`/api/playlist_items/${trackId}?playlist_id=${playlistId}`, {method: 'DELETE'})
+    if (response.ok) {
+      dispatch(removePlaylist(trackId));
+    }
+}
 
 const playlistItemsReducer = (state = {}, action) => {
     switch (action.type) {

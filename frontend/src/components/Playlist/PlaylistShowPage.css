@@ -4,4 +4,13 @@
     margin: 0 10vw;
     margin-top: 46px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.playlist-items {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw;
+    margin-top: 5%;
 }

@@ -29,15 +29,14 @@ class Api::PlaylistItemsController < ApplicationController
       def create
         @playlist_item = PlaylistItem.new(playlist_item_params)
         if @playlist_item.save
-          render :show
         else
           render json: { errors: ['The provided credentials were invalid.']}, status: 422      
         end
       end
   
       def destroy
-        @track = Track.find_by(id: params[:id])
-        @track.destroy
+        @playlistItem = PlaylistItem.where(track_id: params[:id]).where(playlist_id: params[:playlist_id])
+        @playlistItem[0].destroy
       end
     
       private
