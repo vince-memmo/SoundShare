@@ -80,12 +80,12 @@ function Player() {
 
   const playSong = () => {
     if (currentSong.id !== 'init'){
-      const prevItemButton = document.querySelector(`.play-pause-${currentSong.id}`);
-      prevItemButton.innerHTML = 'Play'
+      const prevItemButton = document.getElementById(`play-pause-${currentSong.id}`);
+      prevItemButton.className = 'play-item-play'
     }
     if (track.id) {
-      const itemButton = document.querySelector(`.play-pause-${track.id}`);
-      itemButton.innerHTML = 'Pause'
+      const itemButton = document.getElementById(`play-pause-${track.id}`);
+      itemButton.className = 'play-item-pause'
       if (track.id === currentSong.id) {
         audio.currentTime = pauseTime
         setCurrentSong(track)
@@ -102,8 +102,8 @@ function Player() {
     if (currentSong !== track) {
       dispatch(receivePlaying(true))
     } else {
-      const pausedItemButton = document.querySelector(`.play-pause-${currentSong.id}`);
-      pausedItemButton.innerHTML = 'Play'
+      const pausedItemButton = document.getElementById(`play-pause-${currentSong.id}`);
+      pausedItemButton.className = 'play-item-play'
       setPauseTime(audio.currentTime)
       audio.pause()
     }

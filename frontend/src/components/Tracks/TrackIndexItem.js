@@ -14,9 +14,9 @@ const TrackIndexItem = ({track}) => {
     const user_id = sessionUser.id
     
     const handleClick = (track) => {
-        const playButton = document.querySelector(`.play-pause-${track.id}`)
+        const playButton = document.getElementById(`play-pause-${track.id}`)
         const duration = document.getElementById(`audio-${track.id}`).duration
-        if (playButton.innerHTML === 'Play') {
+        if (playButton.className === 'play-item-play') {
             if(track.id !== currentTrack.id && currentTrack.id) {
                 dispatch(receiveDuration(duration))
                 dispatch(receiveQueue(track))
@@ -34,14 +34,14 @@ const TrackIndexItem = ({track}) => {
     const buttonCreator = (track) => {
         if (playing && (track.id === currentTrack.id)) {
             return (
-                <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Pause</button>
+                <div className={`play-item-pause`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
                 )
-            } else {
-                return(
-                    <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Play</button>
-                    )
-                }
+        } else {
+            return(
+                <div className={`play-item-play`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                )
             }
+        }
             
     return (
         <>
