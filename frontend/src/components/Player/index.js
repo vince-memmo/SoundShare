@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { receivePlaying } from '../../store/playing';
 import ProgressBar from './ProgressBar';
 import { receiveDuration, getDuration } from '../../store/duration';
+import PlaylerThumbnail from './PlayerThumbnail';
 
 function Player() {
   const sessionUser = useSelector(state => state.session.user);
@@ -109,18 +110,32 @@ function Player() {
     }
   }
 
+  const muteToggle = () => {
+    // debugger
+    const muteButton = document.getElementById('player-mute-button')
+    if (muteButton.className === `player-mute`) {
+      audio.volume = 0
+      muteButton.className='player-unmute'
+    } else {
+      audio.volume = 1
+      muteButton.className='player-mute'
+    }
+  }
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
           <div className='player-controls'>
-            <button className='player-skip-back'>Back</button>
+            <div className='player-skip-back'></div>
             <div className='player-play' id='play-pause-button' onClick={() => handleClick(track)}></div>
-            <button className='player-skip-forward'>For</button>
-              <ProgressBar percentage={percentage}/>
+            <div className='player-skip-forward'></div>
+              <ProgressBar percentage={percentage} duration={duration}/>
               <audio id="audio" ref={audioRef} src={audio.src}></audio>
-            <button className='player-volume'>Mute</button>
-            <div className='player-thumbnail'></div>
+            <div className='player-mute' id='player-mute-button' onClick={() => muteToggle()}></div>
+            <div className='player-thumbnail-section'>
+              <PlaylerThumbnail track={track}/>
+            </div>
           </div>
       </>
     );

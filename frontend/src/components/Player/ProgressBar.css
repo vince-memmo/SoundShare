@@ -1,61 +1,62 @@
- .range {
-    -webkit-appearance: none;
-    width: 40vw;
-    cursor: pointer;
-    background-color: #FF5500;
-    height: 4px;
-    cursor: pointer;
-    opacity: 1;
-    margin: 0 20px;
+.slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .thumb {
-    appearance: none;
-} */
+.slider {
+  -webkit-appearance: none;
+  width: 400px;
+  height: 1px;
+  background: #ccc;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
 
-.range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width:10px;
-    height: 10px;
-  
-    background-color: #FF5500;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      width: 400px;
+      -webkit-appearance: none;
+      background-color: #CCC;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 3px;
+      -webkit-appearance: none;
+      color: #FF5500;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background: #FF5500;
+      box-shadow: -400px 0 0 400px #FF5500;
+    }
+}
 
+.current-time {
+  margin-top: 7%;
+  padding-left: 2%;
+  height: 46px;
+  width: 40px;
+  color: #FF5500;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+}
 
-/* .slide-container::before {
-    content: '';
-    width: 297px;
-    background-color: black;
-    height: 3px;
-    display: block;
-    position: absolute;
-    border-radius: 10px;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-} */
-
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  } */
-  
-  /* body {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-family: sans-serif;
-  } */
-  
-  /* .player-progress-bar {
-    width: 600px;
-    padding: 0 10px;
-    background-color: white;
-    padding: 30px 50px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
-  } */
+.duration {
+  margin-top: 7%;
+  margin-left: 3%;
+  height: 46px;
+  width: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+}

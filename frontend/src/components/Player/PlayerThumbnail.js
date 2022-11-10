@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { receiveQueue } from '../../store/queue';
 import {receivePlaying} from '../../store/playing'
-import './TrackIndexLibrary.css'
+import './PlayerThumbnail.css'
 import { receiveDuration } from '../../store/duration';
-import PlaylistModal from '../Playlist/PlaylistModal';
 import { useHistory } from 'react-router-dom';
 
 const PlaylerThumbnail = ({track}) => {
@@ -14,39 +13,33 @@ const PlaylerThumbnail = ({track}) => {
     const sessionUser = useSelector(state => state.session.user);
     let currentTrack = useSelector(state => state.queue)
     const user_id = sessionUser.id
-    
-    const handleClick = (track) => {
-        const playButton = document.getElementById(`play-pause-${track.id}`)
-        const duration = document.getElementById(`audio-${track.id}`).duration
-        if (playButton.className === 'play-item-play') {
-            if(track.id !== currentTrack.id && currentTrack.id) {
-                dispatch(receiveDuration(duration))
-                dispatch(receiveQueue(track))
-                dispatch(receivePlaying(false))
-            } else {
-                dispatch(receiveDuration(duration))
-                dispatch(receiveQueue(track))
-                dispatch(receivePlaying(true))
-            }
+
+    const playerThumbnail = () => {
+        // debugger
+        if (currentTrack.name) {
+            return (
+            <>
+                <div className='player-thumbnail-item'>
+                    <img className='player-thumbnail' src={currentTrack.photoUrl}/>
+                    <div className=''></div>
+                    <div className='player-track-info'>
+                        <h3 className='player-uploader-name'>Uploader</h3>
+                        <h3 className='player-track-title' onClick={() => history.push(`/tracks/${track.id}/edit`)}>{track.name}</h3>
+                    </div>
+                </div>
+            </>
+            )
         } else {
-            dispatch(receivePlaying(false))
+            return (
+                <div className='player-thumbnail-container'></div>
+            )
         }
     }
+
             
     return (
         <>
-            <div className='track-index-item'>
-                <div className='thumbnail-container'>
-                        {buttonCreator(track)}
-                    <img className='thumbnail' src={track.photoUrl}/>
-                        <PlaylistModal trackId={track.id}/>
-                </div>
-                <div className=''></div>
-                <div className='track-info'>
-                    <h3 className='library-track-title' onClick={() => history.push(`/tracks/${track.id}/edit`)}>{track.name}</h3>
-                    <h3 className='uploader-name'>Uploader</h3>
-                </div>
-            </div>
+            {playerThumbnail()}
         </>
     )
 }

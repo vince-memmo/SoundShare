@@ -18,7 +18,6 @@ function PlaylistLibrary() {
 
   return (
     <>
-      <h1>{`${sessionUser.username}'s Songs`}</h1>
       <div className='track-index-library-grid'>
           {tracks.map(track => 
             <>
