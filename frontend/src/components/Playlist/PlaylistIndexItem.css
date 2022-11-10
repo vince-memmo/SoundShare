@@ -48,7 +48,31 @@
 }
 
 .add-to-playlist-commit {
+    border: 1px lightgray solid;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    cursor: pointer;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 13px;
+}
+
+.added-to-playlist-commit {
+    border: 1px lightgray solid;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+    border-color: #FF5500;
+    color: #FF5500;
 }

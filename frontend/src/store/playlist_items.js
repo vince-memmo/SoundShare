@@ -39,6 +39,14 @@ export const fetchPlaylistItems = (playlistId) => async dispatch => {
     }
 }
 
+export const fetchPlaylistItemsByTrackId = (trackId) => async dispatch => {
+  const response = await fetch(`/api/playlists/na/playlist_items?track_id=${trackId}`)
+  if (response.ok) {
+      const playlistItems = await response.json()
+      dispatch(receivePlaylistItems(playlistItems))
+  }
+}
+
 export const deletePlaylistItem = (trackId, playlistId) => async dispatch => {
     const response = await csrfFetch(`/api/playlist_items/${trackId}?playlist_id=${playlistId}`, {method: 'DELETE'})
     if (response.ok) {

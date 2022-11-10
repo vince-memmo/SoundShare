@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PlaylistIndexItem.css'
 import { createPlaylistItem } from '../../store/playlist_items';
+import { fetchPlaylistItems } from '../../store/playlist_items';
 
-const PlaylistIndexItem = ({playlist, trackId}) => {
+const PlaylistIndexItem = ({playlist, trackID, playlistItems}) => {
     const dispatch = useDispatch()
     const playing = useSelector(state => state.playing);
     const sessionUser = useSelector(state => state.session.user);
@@ -11,7 +12,28 @@ const PlaylistIndexItem = ({playlist, trackId}) => {
     const user_id = sessionUser.id
 
     const addTracktoPlaylist = () => {
-        dispatch(createPlaylistItem(playlist.id, trackId))
+        debugger
+        dispatch(createPlaylistItem(playlist.id, trackID))
+    }
+
+    const buttonCreator = () => {
+        let inPlaylist = false
+
+        for (let i = 0; i < Object.keys(playlistItems).length; i++) {
+            if ((playlist.id === playlistItems[i].playlistId) && (playlistItems[i].trackId === trackID)) {
+                inPlaylist = true
+            }
+        }
+
+        if (inPlaylist) {
+            return (
+                <div className='added-to-playlist-commit' onClick={addTracktoPlaylist}>Added</div>
+                )
+        } else {
+            return(
+            <div className='add-to-playlist-commit' onClick={addTracktoPlaylist}>Add To Playlist</div>
+        )
+        }
     }
     
     return (
@@ -23,9 +45,8 @@ const PlaylistIndexItem = ({playlist, trackId}) => {
                 </div>
                 <div className='playlist-info'>
                     <h3 className='playlist-title'>{playlist.name}</h3>
-                    <div className='add-to-playlist-commit-container'>
-                        <div className='add-to-playlist-commit' onClick={addTracktoPlaylist}>Add To Playlist</div>
-                    </div>
+                        {/* <div className='add-to-playlist-commit' onClick={addTracktoPlaylist}>Add To Playlist</div> */}
+                        {buttonCreator()}
                 </div>
             </div>
         </>

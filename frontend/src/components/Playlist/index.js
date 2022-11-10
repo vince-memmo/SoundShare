@@ -3,19 +3,23 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchUserPlaylists, getPlaylists } from "../../store/playlist";
 import PlaylistIndexItem from "./PlaylistIndexItem";
-import { createPlaylistItem } from "../../store/playlist_items";
+import { fetchPlaylistItemsByTrackId } from "../../store/playlist_items";
 import './index.css'
 
 function Playlists({trackId}) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const playlists = useSelector(getPlaylists)
+    const playlistItems = useSelector(state => state.playlistItems)
     const user_id = sessionUser.id
     
     useEffect(() => {
       dispatch(fetchUserPlaylists(user_id))
     }, [dispatch])
 
+    useEffect(() => {
+      dispatch(fetchPlaylistItemsByTrackId(trackId))
+    }, [dispatch])
 
     return (
       <>
@@ -26,7 +30,7 @@ function Playlists({trackId}) {
         <div className="playlists-container">
             {playlists.map(playlist => 
               <>
-                <PlaylistIndexItem trackId={trackId}  playlist={playlist}/>
+                <PlaylistIndexItem trackID={trackId}  playlist={playlist} playlistItems={playlistItems}/>
               </>
               )}
         </div>

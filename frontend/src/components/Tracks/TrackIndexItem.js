@@ -34,11 +34,19 @@ const TrackIndexItem = ({track}) => {
     const buttonCreator = (track) => {
         if (playing && (track.id === currentTrack.id)) {
             return (
-                <div className={`play-item-pause`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                <>
+                    <div className='button-container'>
+                        <div className={`play-item-pause`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                    </div>
+                </>
                 )
         } else {
             return(
-                <div className={`play-item-play`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                <>
+                    <div className='button-container'>
+                        <div className={`play-item-play`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                    </div>
+                </>
                 )
             }
         }

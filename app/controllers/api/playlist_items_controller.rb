@@ -2,9 +2,13 @@ class Api::PlaylistItemsController < ApplicationController
     wrap_parameters include: Track.attribute_names + ['photo', 'song', 'artistId']
   
       def index
-        params[:playlist_id]
-        @playlist_items = PlaylistItem.where(playlist_items: {playlist_id: params[:playlist_id]})
-        render :index
+        if params[:playlist_id] == 'na'
+          @playlist_items = PlaylistItem.where(playlist_items: {track_id: params[:track_id]})
+          render :index
+        else
+          @playlist_items = PlaylistItem.where(playlist_items: {playlist_id: params[:playlist_id]})
+          render :index
+        end
       end
   
       def show
