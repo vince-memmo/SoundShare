@@ -28,6 +28,25 @@ const LoginForm = (props) => {
             else setErrors([res.statusText]);
           });
     }
+
+    const handleDemoSubmit = (e) => {
+        e.preventDefault()
+        const credential = 'Demo User'
+        const password = 'demouser'
+        setErrors([])
+        dispatch(login({ credential, password }))
+        .catch(async (res) => {
+            let data;
+            try {
+              data = await res.clone().json();
+            } catch {
+              data = await res.text(); 
+            }
+            if (data?.errors) setErrors(data.errors);
+            else if (data) setErrors([data]);
+            else setErrors([res.statusText]);
+          });
+    }
     
     return (
         <>
@@ -39,8 +58,9 @@ const LoginForm = (props) => {
                 <ul>
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>
-                <input type="submit" value="Log In" />
+                <input className="login-button-2" type="submit" value="Log In" />
             </form>
+            <div onClick={handleDemoSubmit} className="demo-login-form">Demo Login</div>
         </div>
         </>
     )

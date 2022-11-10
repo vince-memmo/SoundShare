@@ -12,8 +12,10 @@ const PlaylistIndexItem = ({playlist, trackID, playlistItems}) => {
     const user_id = sessionUser.id
 
     const addTracktoPlaylist = () => {
-        debugger
         dispatch(createPlaylistItem(playlist.id, trackID))
+        const changedButton = document.getElementById(playlist.id)
+        changedButton.className = 'added-to-playlist-commit'
+        changedButton.innerHTML = 'Added'
     }
 
     const buttonCreator = () => {
@@ -27,15 +29,15 @@ const PlaylistIndexItem = ({playlist, trackID, playlistItems}) => {
 
         if (inPlaylist) {
             return (
-                <div className='added-to-playlist-commit' onClick={addTracktoPlaylist}>Added</div>
+                <div className='added-to-playlist-commit' id={playlist.id}>Added</div>
                 )
         } else {
             return(
-            <div className='add-to-playlist-commit' onClick={addTracktoPlaylist}>Add To Playlist</div>
+            <div className='add-to-playlist-commit' id={playlist.id} onClick={addTracktoPlaylist}>Add To Playlist</div>
         )
         }
     }
-    
+
     return (
         <>
             <div className='playlist-index-item'>

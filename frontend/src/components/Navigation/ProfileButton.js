@@ -35,6 +35,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(receivePlaying(false))
+    history.push('./')
     dispatch(sessionActions.logout());
   };
 

@@ -2,21 +2,23 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { receiveQueue } from '../../store/queue';
 import {receivePlaying} from '../../store/playing'
-import './TrackIndexItem.css'
+import './TrackIndexLibrary.css'
 import { receiveDuration } from '../../store/duration';
 import PlaylistModal from '../Playlist/PlaylistModal';
+import { useHistory } from 'react-router-dom';
 
-const TrackIndexItem = ({track}) => {
+const TrackIndexLibrary = ({track}) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const playing = useSelector(state => state.playing);
     const sessionUser = useSelector(state => state.session.user);
     let currentTrack = useSelector(state => state.queue)
     const user_id = sessionUser.id
     
     const handleClick = (track) => {
-        const playButton = document.querySelector(`.play-pause-${track.id}`)
+        const playButton = document.getElementById(`play-pause-${track.id}`)
         const duration = document.getElementById(`audio-${track.id}`).duration
-        if (playButton.innerHTML === 'Play') {
+        if (playButton.className === 'play-item-play') {
             if(track.id !== currentTrack.id && currentTrack.id) {
                 dispatch(receiveDuration(duration))
                 dispatch(receiveQueue(track))
@@ -34,35 +36,42 @@ const TrackIndexItem = ({track}) => {
     const buttonCreator = (track) => {
         if (playing && (track.id === currentTrack.id)) {
             return (
-                <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Pause</button>
+                <>
+                    <div className='button-container'>
+                        <div className={`play-item-pause`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                    </div>
+                </>
                 )
-            } else {
-                return(
-                    <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Play</button>
-                    )
-                }
+        } else {
+            return(
+                <>
+                    <div className='button-container'>
+                        <div className={`play-item-play`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
+                    </div>
+                </>
+                )
             }
+        }
             
     return (
         <>
-        <p>Tracks Library</p>
-            {/* <div className='track-library-index-item'>
-                <div className='library-thumbnail-container'>
+            <div className='track-index-item'>
+                <div className='thumbnail-container'>
                         {buttonCreator(track)}
-                    <img className='library-thumbnail' src={track.photoUrl}/>
+                    <img className='thumbnail' src={track.photoUrl}/>
                         <PlaylistModal trackId={track.id}/>
                 </div>
                 <div className=''></div>
-                <div className='library-track-info'>
-                    <h3 className='track-title'>{track.name}</h3>
+                <div className='track-info'>
+                    <h3 className='library-track-title' onClick={() => history.push(`/tracks/${track.id}/edit`)}>{track.name}</h3>
                     <h3 className='uploader-name'>Uploader</h3>
                 </div>
             </div>
-            <audio id={`audio-${track.id}`}src={track.songUrl}></audio> */}
+            <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
             {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
             {/* <Link to={`/tracks/${track.id}/edit`}>Update Track</Link> */}
         </>
     )
 }
 
-export default TrackIndexItem
+export default TrackIndexLibrary

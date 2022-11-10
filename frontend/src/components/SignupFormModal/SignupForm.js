@@ -53,7 +53,7 @@ function SignupFormPage() {
         <label>
           <input
             type="text"
-            placeholder="Your Username"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -62,7 +62,7 @@ function SignupFormPage() {
         <label>
           <input
             type="password"
-            placeholder="Your Username"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

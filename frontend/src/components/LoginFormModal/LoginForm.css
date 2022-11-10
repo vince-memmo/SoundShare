@@ -37,7 +37,7 @@
     margin-top: 5px;
 }
 
-.login-form input:last-child {
+.login-button-2 {
     margin-top: 20px;
     text-align: center;
     border: none;
@@ -48,4 +48,21 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 13.5px;
+}
+
+.demo-login-form {
+    display: flex;
+    margin-top: 20px;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    background-color: #ff5500;
+    color: white;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 13.5px;
+    text-align: center;
 }

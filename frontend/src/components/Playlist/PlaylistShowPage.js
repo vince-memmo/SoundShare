@@ -30,8 +30,6 @@ function PlaylistShowPage() {
       }
     }, [playlistItems])
     
-    // debugger
-
     return (
       <>
       <div className="playlist-show-body">
