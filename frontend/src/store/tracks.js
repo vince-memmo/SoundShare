@@ -78,6 +78,7 @@ export const createTrack = track => async (dispatch) => {
   if (response.ok) {
     const newTrack = await response.json();
     dispatch(receiveTrack(newTrack));
+    return newTrack
   }
 };
 
@@ -90,6 +91,7 @@ export const updateTrack = (track, trackId) => async (dispatch) => {
   if (response.ok) {
     const newTrack = await response.json();
     dispatch(receiveTrack(newTrack));
+    return newTrack
   }
 };
 

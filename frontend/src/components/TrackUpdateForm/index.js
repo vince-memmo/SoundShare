@@ -6,9 +6,11 @@ import { useParams } from "react-router-dom";
 import { fetchTrack, getTrack } from "../../store/tracks";
 import './TrackUpdateForm.css'
 import { deleteTrack } from "../../store/tracks";
+import { useHistory } from "react-router-dom";
 
 function TrackForm() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { trackId } = useParams() 
     const sessionUser = useSelector(state => state.session.user);
     let track = useSelector(getTrack(trackId))
@@ -55,6 +57,7 @@ function TrackForm() {
         dispatch(createTrack(formData))
       } else {
         dispatch(updateTrack(formData, track.id))
+        .then(newTrack => history.push('/library'))
       }
     }
 

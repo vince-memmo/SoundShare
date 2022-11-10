@@ -5,9 +5,11 @@ import { createTrack, updateTrack } from "../../store/tracks";
 import { useParams } from "react-router-dom";
 import { fetchTrack, getTrack } from "../../store/tracks";
 import './TrackUploadPage.css'
+import { useHistory } from "react-router-dom";
 
 function TrackForm() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { trackId } = useParams() 
     const sessionUser = useSelector(state => state.session.user);
     const user_id = sessionUser.id
@@ -36,6 +38,7 @@ function TrackForm() {
         formData.append('track[song]', songUrl);
       }
         dispatch(createTrack(formData))
+        .then(newTrack => history.push('/library'))
     }
 
     return (

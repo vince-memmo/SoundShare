@@ -8,10 +8,8 @@ import splashImg1 from '../../assets/pics/carousel1.jpeg'
 import splashImg3 from '../../assets/pics/carousel3.jpeg'
 import splashImg4 from '../../assets/pics/carousel4.jpeg'
 import { useSelector, useDispatch } from "react-redux"
-import SwiperCore, {Navigation, Pagination, Autoplay} from 'swiper'
 import { Redirect } from 'react-router-dom';
 import { getTracks } from '../../store/tracks';
-import { Swiper, SwiperSlide } from "swiper/react";
 import TrackIndexSplash from '../Tracks/TrackIndexSplash';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -25,21 +23,12 @@ const SplashPage = () => {
         dispatch(fetchTracks())
     }, [dispatch])
 
-    SwiperCore.use([Pagination, Autoplay])
     const sessionUser = useSelector(state => state.session.user);
     if (sessionUser) return <Redirect to="/discover" />;
 
 
     const swiperSlides = [splashImg1, splashImg3]
     const slide = []
-
-    // for (let i = 0; i < 2; i++) {
-    //     slide.push(
-    //     <SwiperSlide tag='li' key={`slide-${i}`}>
-    //         <img src={swiperSlides[i]} alt={`logo-${i}`} />
-    //     </SwiperSlide>
-    //     )
-    // }
 
     return (
         <>
@@ -66,18 +55,6 @@ const SplashPage = () => {
                     <SignupTodayModal />
                 </section>
                 </section>
-                {/* <Swiper 
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false
-                    }}
-                    modules={[Pagination, Autoplay]}
-                    id='swiper-container' wrapperTag='ul' pagination={{
-                    clickable: true
-                    }}
-                    >
-                    {slide}
-                </Swiper> */}
                 
         </section>
         <section className='splash-teaser'>
