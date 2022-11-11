@@ -15,7 +15,6 @@ const PlaylerThumbnail = ({track}) => {
     const user_id = sessionUser.id
 
     const playerThumbnail = () => {
-        // debugger
         if (currentTrack.name) {
             return (
             <>

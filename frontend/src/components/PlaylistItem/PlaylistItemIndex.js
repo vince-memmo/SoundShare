@@ -6,11 +6,11 @@ import './PlaylistItemIndex.css'
 import { receiveDuration } from '../../store/duration';
 import { deletePlaylistItem } from '../../store/playlist_items';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-
+import { useHistory
+ } from 'react-router-dom';
 const PlaylistItemIndex = ({track, trackId}) => {
     const {playlistId} = useParams()
-    // const history = useHistory()
+    const history = useHistory()
     const dispatch = useDispatch()
     const playing = useSelector(state => state.playing);
     const sessionUser = useSelector(state => state.session.user);
@@ -49,6 +49,7 @@ const PlaylistItemIndex = ({track, trackId}) => {
 
     const removePlaylistItem = () => {
         dispatch(deletePlaylistItem(trackId, parseInt(playlistId)))
+        .then(history.push(`/library`))
     }
 
     return (

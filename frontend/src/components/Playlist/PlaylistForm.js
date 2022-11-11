@@ -5,9 +5,11 @@ import { createTrack, updateTrack } from "../../store/tracks";
 import { useParams } from "react-router-dom";
 import { fetchTrack, getTrack } from "../../store/tracks";
 import { createPlaylist } from "../../store/playlist";
+import { useHistory } from "react-router-dom";
 
 function PlaylistForm() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { trackId } = useParams() 
     const sessionUser = useSelector(state => state.session.user);
     const user_id = sessionUser.id
@@ -30,6 +32,7 @@ function PlaylistForm() {
         formData.append('playlist[photo]', photoUrl);
       }
         dispatch(createPlaylist(formData))
+        .then(newPlaylist => history.push('/library'))
     }
 
     return (

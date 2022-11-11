@@ -36,7 +36,8 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(receivePlaying(false))
     history.push('./')
-    dispatch(sessionActions.logout());
+    dispatch(sessionActions.logout())
+    .then(newPlaylist => history.push('/library'))
   };
 
   const goToCreatePlaylist = () => {

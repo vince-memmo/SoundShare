@@ -10,6 +10,23 @@
     padding-top: 5%;
 }
 
+.carousel-section .swiper-container {
+    overflow: hidden;
+}
+
+.carousel-section .swiper-container .swiper-button-next, 
+.carousel-section .swiper-container .swiper-button-prev {
+    top: 24.5%;
+}
+
+.carousel-section .swiper-container .swiper-button-prev {
+    left: 5%;
+}
+
+.carousel-section .swiper-container .swiper-button-next {
+    right: 35%;
+}
+
 .singes-carousel-info {
     margin-bottom: 2%;
     margin-left: 2%;
@@ -49,8 +66,8 @@
 }
 
 .discover-singles-carousel {
-    width: 60vw;
-    margin: 0 1vw;
+    width: 55vw;
+    margin-left: 7%;
 }
 
 .discover-sidebar {

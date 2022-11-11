@@ -69,6 +69,7 @@ export const createPlaylist = playlist => async (dispatch) => {
   if (response.ok) {
     const newPlaylist = await response.json();
     dispatch(receivePlaylist(newPlaylist));
+    return newPlaylist
   }
 };
 
