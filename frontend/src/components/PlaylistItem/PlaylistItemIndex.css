@@ -15,15 +15,22 @@
     align-items: center;
 }
 
+.play-item-play {
+    position: absolute;
+    color: #f50;
+    z-index: 1;
+}
+
+.play-item-pause {
+    position: absolute;
+    color: #f50;
+    z-index: 1;
+}
+
 .playlist-item-thumbnail {
     width: 50px;
     height: 50px;
     border: 1px solid grey;
-}
-
-.play-pause {
-    position: absolute;
-    z-index: 1;
 }
 
 .playlist-item-track-info {

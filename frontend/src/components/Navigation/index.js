@@ -24,7 +24,7 @@ function Navigation() {
               <button type='submit' className='nav-search'></button>
             </div>
             <div className='nav-right-elements'>
-              <Link to={`/${sessionUser.id}/upload`}><p className='upload-button'>Upload</p></Link>
+              <Link to={`/${sessionUser.id}/upload`} className='upload-button'><p >Upload</p></Link>
               {/* <Link to={`/${user_id}/upload`}>Add Track</Link> */}
               <ProfileButton user={sessionUser} />
             </div>

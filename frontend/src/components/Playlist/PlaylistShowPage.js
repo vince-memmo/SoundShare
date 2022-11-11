@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getTracks } from "../../store/tracks";
 import { fetchUserTracks, deleteTrack } from "../../store/tracks";
@@ -10,7 +10,9 @@ import PlaylistItemIndex from "../PlaylistItem/PlaylistItemIndex";
 import { fetchTrackForPlaylist } from "../../store/tracks";
 import TrackIndexItem from '../Tracks/TrackIndexItem'
 
-function PlaylistShowPage() {
+function PlaylistShowPage({playlist}) {
+    const location = useLocation()
+    const preSelectedPlaylist = location.state ? location.state.playlist : {}
     const {playlistId} = useParams()
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
@@ -29,11 +31,20 @@ function PlaylistShowPage() {
         })
       }
     }, [playlistItems])
-    
+
     return (
       <>
       <div className="playlist-show-body">
-        <div>Playlist 1</div>
+        <div className='playlist-library-item'>
+            <div className='playlist-library-thumbnail-container'>
+                    {/* {buttonCreator(track)} */}
+                <img className='playlist-library-thumbnail' src={preSelectedPlaylist.photoUrl}/>
+            </div>
+            <div className='playlist-library-info'>
+                <h3 className='library-playlist-title'>{preSelectedPlaylist.name}</h3>
+                <h3 className='library-playlist-uploader'>Uploader</h3>
+            </div>
+        </div>
         <div className="playlist-items">
             {Object.values(tracks).map(track => 
               <>
@@ -46,3 +57,13 @@ function PlaylistShowPage() {
     );
   }
   export default PlaylistShowPage;
+      // <div className='playlist-library-item'>
+      //     <div className='playlist-library-thumbnail-container'>
+      //             {/* {buttonCreator(track)} */}
+      //         <img className='playlist-library-thumbnail' src={playlist.photoUrl}/>
+      //     </div>
+      //     <div className='playlist-library-info'>
+      //         <h3 className='library-playlist-title' onClick={goToPlaylistPage}>{playlist.name}</h3>
+      //         <h3 className='library-playlist-uploader'>Uploader</h3>
+      //     </div>
+      // </div>

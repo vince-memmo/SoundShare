@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PlaylistIndexLibrary.css'
-import { createPlaylistItem } from '../../store/playlist_items';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PlaylistIndexLibrary = ({playlist}) => {
     const dispatch = useDispatch()
@@ -11,10 +11,6 @@ const PlaylistIndexLibrary = ({playlist}) => {
     let currentTrack = useSelector(state => state.queue)
     const user_id = sessionUser.id
     const history = useHistory()
-
-    const goToPlaylistPage = () => {
-        history.push(`/playlists/${playlist.id}`)
-    }
     
     return (
         <>
@@ -24,7 +20,12 @@ const PlaylistIndexLibrary = ({playlist}) => {
                     <img className='playlist-library-thumbnail' src={playlist.photoUrl}/>
                 </div>
                 <div className='playlist-library-info'>
-                    <h3 className='library-playlist-title' onClick={goToPlaylistPage}>{playlist.name}</h3>
+                    <Link to={{
+                        pathname:`/playlists/${playlist.id}`,
+                        state:{playlist:playlist}
+                        }}
+                        className="library-playlist-title" >{playlist.name}
+                    </Link>
                     <h3 className='library-playlist-uploader'>Uploader</h3>
                 </div>
             </div>

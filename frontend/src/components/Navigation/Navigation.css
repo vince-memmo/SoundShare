@@ -45,6 +45,7 @@
 }
 
 .library-button {
+    text-decoration: none;
     width: 104px;
     height: 46px;
     color: #FFFFFF;
@@ -55,7 +56,6 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 14px;
-    text-decoration: none;
 }
 
 .nav-searchbar-container {
