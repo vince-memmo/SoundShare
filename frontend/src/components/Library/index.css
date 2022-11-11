@@ -30,6 +30,7 @@
 
 .library-playlists-button {
     cursor: pointer;
+    color: #f50;
 }
 
 .library-tracks-button {

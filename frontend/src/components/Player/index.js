@@ -82,11 +82,11 @@ function Player() {
   const playSong = () => {
     if (currentSong.id !== 'init'){
       const prevItemButton = document.getElementById(`play-pause-${currentSong.id}`);
-      prevItemButton.className = 'play-item-play'
+      if (prevItemButton) prevItemButton.className = 'play-item-play'
     }
     if (track.id) {
       const itemButton = document.getElementById(`play-pause-${track.id}`);
-      itemButton.className = 'play-item-pause'
+      if (itemButton) itemButton.className = 'play-item-pause'
       if (track.id === currentSong.id) {
         audio.currentTime = pauseTime
         setCurrentSong(track)
@@ -104,14 +104,13 @@ function Player() {
       dispatch(receivePlaying(true))
     } else {
       const pausedItemButton = document.getElementById(`play-pause-${currentSong.id}`);
-      pausedItemButton.className = 'play-item-play'
+      if (pausedItemButton) pausedItemButton.className = 'play-item-play'
       setPauseTime(audio.currentTime)
       audio.pause()
     }
   }
 
   const muteToggle = () => {
-    // debugger
     const muteButton = document.getElementById('player-mute-button')
     if (muteButton.className === `player-mute`) {
       audio.volume = 0

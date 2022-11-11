@@ -24,6 +24,7 @@ const PlaylerThumbnail = ({track}) => {
                     <div className='player-track-info'>
                         <h3 className='player-uploader-name'>Uploader</h3>
                         <h3 className='player-track-title' onClick={() => history.push(`/tracks/${track.id}/edit`)}>{track.name}</h3>
+                        <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
                     </div>
                 </div>
             </>
