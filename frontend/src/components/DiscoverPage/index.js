@@ -7,14 +7,19 @@ import { fetchTracks } from "../../store/tracks";
 import { getTracks } from "../../store/tracks";
 import TrackIndexItem from "../Tracks/TrackIndexItem";
 import './DiscoverPage.css'
+import './DiscoverPlaylists.css'
 import React, { Component } from "react";
+import PlaylistIndexLibrary from '../Playlist/PlaylistIndexLibrary';
+import { fetchUserPlaylists, getPlaylists } from '../../store/playlist';
 
 function DiscoverPage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const swiperSlides = []
     const tracks = useSelector(getTracks)
+    const playlists = useSelector(getPlaylists)
     const slides = []
+    const user_id = sessionUser.id
 
     const settings = {
       dots: true,
@@ -28,6 +33,7 @@ function DiscoverPage() {
     
     useEffect(() => { 
       dispatch(fetchTracks())
+      dispatch(fetchUserPlaylists(user_id))
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />
@@ -62,10 +68,22 @@ function DiscoverPage() {
             <div className='singes-carousel-info'>
                 <p className="singles-carousels-title">Playlists</p>
                 <p className="singles-carousels-bio">Some playlists you may like</p>
+                <section className="playlist-section">
+                  <div className="playlist-carousel">
+                    <div className="discover-playlists-container">
+                      {playlists.map(playlist => 
+                        <>
+                          <PlaylistIndexLibrary playlist={playlist}/>
+                        </>
+                        )}
+                    </div>
+                  </div>
+                </section>
             </div>
           </div>
-         </div>
+        </div>
         </section>
+        
         <div className="discover-sidebar"></div>
         <div className="right-panel"></div>
       </div>
