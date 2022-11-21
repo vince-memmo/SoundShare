@@ -5,6 +5,7 @@ import {receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
 import { receiveDuration } from '../../store/duration';
 import PlaylistModal from '../Playlist/PlaylistModal';
+import { createLike } from '../../store/likes';
 
 const TrackIndexItem = ({track}) => {
     const dispatch = useDispatch()
@@ -29,6 +30,19 @@ const TrackIndexItem = ({track}) => {
         } else {
             dispatch(receivePlaying(false))
         }
+    }
+
+    const likeToggle = (e) => {
+        const trackId = parseInt(e.target.id.slice(5))
+        const likeEl = document.getElementById(e.target.id)
+        if (likeEl.className === 'fa-solid fa-heart index-unliked') {
+            likeEl.className = 'fa-solid fa-heart index-liked'
+            dispatch(createLike(user_id, trackId))
+        } else {
+            likeEl.className = 'fa-solid fa-heart index-unliked'
+        }
+
+
     }
 
     const buttonCreator = (track) => {
@@ -57,7 +71,10 @@ const TrackIndexItem = ({track}) => {
                 <div className='thumbnail-container'>
                         {buttonCreator(track)}
                     <img className='thumbnail' src={track.photoUrl}/>
+                    <div className='track-index-buttons'>
+                        <i class="fa-solid fa-heart index-unliked" id={`like-${track.id}`} onClick={likeToggle}></i>
                         <PlaylistModal trackId={track.id}/>
+                    </div>
                 </div>
                 <div className=''></div>
                 <div className='track-info'>

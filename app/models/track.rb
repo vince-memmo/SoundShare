@@ -23,6 +23,7 @@ class Track < ApplicationRecord
 
     belongs_to :user, foreign_key: :artist_id, class_name: :User
     has_many :playlist_items, foreign_key: :track_id, class_name: :PlaylistItem, dependent: :destroy
+    has_many :likes, foreign_key: :track_id, class_name: :Like, dependent: :destroy
 
     has_one_attached :photo
     has_one_attached :song

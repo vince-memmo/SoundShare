@@ -10,6 +10,7 @@ import playlistsReducer from './playlist'
 import playlistItemsReducer from './playlist_items'
 import currentPlaylistTracksReducer from './currentPlaylistTracks'
 import currentTimeReducer from './currentTime'
+import likesReducer from './likes'
 
 const rootReducer = combineReducers ({
     session,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers ({
     playlists: playlistsReducer,
     playlistItems: playlistItemsReducer,
     currentPlaylistTracks: currentPlaylistTracksReducer,
-    currentTime: currentTimeReducer
+    currentTime: currentTimeReducer,
+    likes: likesReducer
 })
 
 let enhancer;

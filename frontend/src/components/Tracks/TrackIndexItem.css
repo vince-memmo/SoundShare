@@ -74,3 +74,22 @@
     font-size: 13px;
     color: grey;
 }
+
+.track-index-buttons {
+    position: relative;
+    display: flex;
+    background-repeat: repeat-x;
+    right: 15%;
+    top: 45%;
+    font-size:20px;
+}
+
+.index-unliked {
+    font-size: 15px;
+    color: white;
+}
+
+.index-liked {
+    font-size: 15px;
+    color: #f50;
+}
