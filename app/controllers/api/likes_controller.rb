@@ -26,10 +26,8 @@ class Api::LikesController < ApplicationController
       end
     
       def create
-        debugger
         @like = Like.new(like_params)
         if @like.save
-            debugger
         else
           render json: { errors: ['The provided credentials were invalid.']}, status: 422      
         end

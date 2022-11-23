@@ -21,7 +21,6 @@ const receiveLikes = (likes) => ({
 
   export const createLike = (userId, trackId) => async dispatch => {
     console.log('createLike')
-    debugger
     let res = await csrfFetch(`/api/likes`, {
         method: 'POST',
         body: JSON.stringify({

@@ -8,6 +8,7 @@ import { getTracks } from "../../store/tracks";
 import TrackIndexItem from "../Tracks/TrackIndexItem";
 import './DiscoverPage.css'
 import './DiscoverPlaylists.css'
+import './DiscoverLikes.css'
 import React, { Component } from "react";
 import PlaylistIndexLibrary from '../Playlist/PlaylistIndexLibrary';
 import { fetchUserPlaylists, getPlaylists } from '../../store/playlist';
@@ -84,8 +85,10 @@ function DiscoverPage() {
         </div>
         </section>
         
-        <div className="discover-sidebar"></div>
-        <div className="right-panel"></div>
+        <div className="discover-likes"></div>
+        <div className="right-panel">
+          
+        </div>
       </div>
       </>
     )
