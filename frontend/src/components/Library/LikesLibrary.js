@@ -10,7 +10,7 @@ function LikesLibrary() {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
 //   const tracks = useSelector(getLikes)
-//   const user_id = sessionUser.id
+  const user_id = sessionUser.id
   
   useEffect(() => {
     dispatch(fetchUserLikes(user_id))
