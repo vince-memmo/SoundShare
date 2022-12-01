@@ -19,6 +19,14 @@ const receiveLikes = (likes) => ({
     like
   });
 
+  export const getLikes = state => {
+    if (state.likes) {
+      return Object.values(state.likes)
+    } else {
+      return []
+    }
+  }
+
   export const createLike = (userId, trackId) => async dispatch => {
     console.log('createLike')
     let res = await csrfFetch(`/api/likes`, {
@@ -33,6 +41,14 @@ const receiveLikes = (likes) => ({
     if (res.ok) {
         const like = await res.json()
         dispatch(receiveLike(like))
+    }
+  }
+
+  export const fetchUserLikes = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/likes?user_id=${userId}`);
+    if (response.ok) {
+      const likes = await response.json();
+      dispatch(receiveLikes(likes));
     }
   }
 

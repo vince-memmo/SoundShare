@@ -35,8 +35,10 @@
 
 .library-tracks-button {
     cursor: pointer;
+    color: black;
 }
 
 .library-likes-button {
     cursor: pointer;
+    color: black;
 }

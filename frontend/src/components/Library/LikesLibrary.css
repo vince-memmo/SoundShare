@@ -1,0 +1,6 @@
+.track-index-library-grid {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    margin-top: 2%;
+    grid-row-gap: 2%;
+}

@@ -2,13 +2,8 @@ class Api::LikesController < ApplicationController
     # wrap_parameters include: Track.attribute_names + ['photo', 'song', 'artistId']
   
       def index
-        if params[:user_id]
-          @playlists = Like.where(playlists: {user_id: params[:user_id]})
-          render :index
-        else
-          @tracks = Like.all
-          render :index
-        end
+        @likes = Like.where(likes: {user_id: params[:user_id]})
+        render :index
       end
   
       def update

@@ -13,6 +13,7 @@ function TrackForm() {
     const history = useHistory()
     const { trackId } = useParams() 
     const sessionUser = useSelector(state => state.session.user);
+    const [errors, setErrors] = useState([]);
     let track = useSelector(getTrack(trackId))
     const user_id = sessionUser.id
     const formType = trackId ? "Update Post" : "Create Post"
@@ -47,6 +48,15 @@ function TrackForm() {
     
     const handleSubmit = (e) => {
       e.preventDefault()
+
+      if (photoUrl) {
+        const allowedImageExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        if (!allowedImageExtensions.exec(photoUrl.name)) {
+          alert('Invalid image file type, please upload a .jpeg, .jpg, or, .png');
+          return;
+        }
+      }
+
       const formData = new FormData();
       formData.append('track[name]', name);
       formData.append('track[artist_id]', user_id)
@@ -58,8 +68,22 @@ function TrackForm() {
       } else {
         dispatch(updateTrack(formData, track.id))
         .then(newTrack => history.push('/library'))
+        .catch(async (res) => {
+          let data;
+          try {
+            // .clone() essentially allows you to read the response body twice
+            data = await res.clone().json();
+          } catch {
+            data = await res.text(); // Will hit this case if the server is down
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([res.statusText]);
+        });
       }
     }
+
+    const errorMessage = <h3>{`You already have a song named ${name}, please chose a different name`}</h3>
 
     return (
       <>
@@ -72,6 +96,9 @@ function TrackForm() {
             <input type="file" onChange={(e) => setPhotoUrl(e.currentTarget.files[0])}/>
             {/* {!trackId && <input type="file" onChange={(e) => setSongUrl(e.currentTarget.files[0])}/>} */}
             <input type="submit" ></input>
+            <ul>
+              {errors.map(error => errorMessage)}
+            </ul>
         </form>
         <button className="delete-song" onClick={() => dispatch(deleteTrack(trackId))}>Delete Song</button>
       </div>

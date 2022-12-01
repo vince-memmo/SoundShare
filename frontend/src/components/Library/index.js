@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import PlaylistLibrary from './PlaylistsLibrary';
 import TracksLibrary from './TracksLibrary'
 import PlaylistIndexItem from "../Playlist/PlaylistIndexItem";
+import LikesLibrary from './LikesLibrary';
 import { useState } from 'react';
 
 
@@ -12,19 +13,24 @@ function Library() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const [selected, setSelected] = useState('playlists')
-    
-    useEffect(() => { 
-    }, [dispatch])
 
     const display = () => {
       if (selected === 'playlists') {
         if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = '#f0'
         if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = 'black'
+        if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = 'black'
         return <PlaylistLibrary />
       } else if (selected === 'tracks') {
         if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = '#f0'
         if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = 'black'
+        if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = 'black'
         return <TracksLibrary />
+      }
+      else if (selected === 'likes') {
+        if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = '#f0'
+        if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = 'black'
+        if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = 'black'
+        return <LikesLibrary />
       }
     }
     

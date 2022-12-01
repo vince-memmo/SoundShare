@@ -20,6 +20,8 @@
 #
 class Track < ApplicationRecord
     validates :artist_id, :name, presence:true
+    validates :name, uniqueness: { scope: :artist_id }
+
 
     belongs_to :user, foreign_key: :artist_id, class_name: :User
     has_many :playlist_items, foreign_key: :track_id, class_name: :PlaylistItem, dependent: :destroy

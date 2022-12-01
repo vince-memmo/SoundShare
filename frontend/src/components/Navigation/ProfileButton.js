@@ -33,11 +33,12 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const logout = (e) => {
+    debugger
     e.preventDefault();
     dispatch(receivePlaying(false))
     history.push('./')
     dispatch(sessionActions.logout())
-    .then(newPlaylist => history.push('/library'))
+    .then(newPlaylist => history.push('/'))
   };
 
   const goToCreatePlaylist = () => {
