@@ -9,8 +9,8 @@ import { fetchUserLikes } from "../../store/likes";
 function LikesLibrary() {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
-  const tracks = useSelector(getLikes)
-  const user_id = sessionUser.id
+//   const tracks = useSelector(getLikes)
+//   const user_id = sessionUser.id
   
   useEffect(() => {
     dispatch(fetchUserLikes(user_id))
@@ -19,11 +19,11 @@ function LikesLibrary() {
   return (
     <>
       <div className='track-index-library-grid'>
-          {tracks.map(track => 
+          {/* {tracks.map(track => 
             <>
               <LikesIndexLibrary track={track}/>
             </>
-            )}
+            )} */}
       </div>
     </>
   );

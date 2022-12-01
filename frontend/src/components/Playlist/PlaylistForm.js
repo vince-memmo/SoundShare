@@ -12,6 +12,7 @@ function PlaylistForm() {
     const history = useHistory()
     const { trackId } = useParams() 
     const sessionUser = useSelector(state => state.session.user);
+    const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id
     
       let track = {
@@ -25,6 +26,18 @@ function PlaylistForm() {
     
     const handleSubmit = (e) => {
       e.preventDefault()
+
+      if (!photoUrl) {
+        alert('Please attach an image file');
+        return;
+      }
+
+      const allowedImageExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+      if (!allowedImageExtensions.exec(photoUrl.name)) {
+        alert('Invalid image file type, please upload a .jpeg, .jpg, or, .png');
+        return;
+      }
+
       const formData = new FormData();
       formData.append('playlist[name]', name);
       formData.append('playlist[user_id]', user_id)
