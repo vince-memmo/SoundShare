@@ -6,8 +6,7 @@ import './PlaylistItemIndex.css'
 import { receiveDuration } from '../../store/duration';
 import { deletePlaylistItem } from '../../store/playlist_items';
 import { useParams } from 'react-router-dom';
-import { useHistory
- } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
  
 const PlaylistItemIndex = ({track, trackId}) => {
     const {playlistId} = useParams()

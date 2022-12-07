@@ -99,7 +99,7 @@ const TrackIndexItem = ({track, likes}) => {
                 <div className=''></div>
                 <div className='track-info'>
                     <h3 className='track-title'>{track.name}</h3>
-                    <h3 className='uploader-name'>Uploader</h3>
+                    <h3 className='uploader-name'>{track.artist}</h3>
                 </div>
             </div>
             <audio id={`audio-${track.id}`}src={track.songUrl}></audio>

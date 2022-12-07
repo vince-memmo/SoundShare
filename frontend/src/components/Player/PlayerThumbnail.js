@@ -22,7 +22,7 @@ const PlaylerThumbnail = ({track}) => {
                     <img className='player-thumbnail' src={currentTrack.photoUrl}/>
                     <div className=''></div>
                     <div className='player-track-info'>
-                        <h3 className='player-uploader-name'>Uploader</h3>
+                        <h3 className='player-uploader-name'>{track.artist}</h3>
                         <h3 className='player-track-title' onClick={() => history.push(`/tracks/${track.id}/edit`)}>{track.name}</h3>
                         <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
                     </div>

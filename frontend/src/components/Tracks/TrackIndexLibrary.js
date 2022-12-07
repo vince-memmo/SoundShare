@@ -64,7 +64,7 @@ const TrackIndexLibrary = ({track}) => {
                 <div className=''></div>
                 <div className='track-info'>
                     <h3 className='library-track-title' onClick={() => history.push(`/tracks/${track.id}/edit`)}>{track.name}</h3>
-                    <h3 className='uploader-name'>Uploader</h3>
+                    <h3 className='uploader-name'>{track.artist}</h3>
                 </div>
             </div>
             <audio id={`audio-${track.id}`}src={track.songUrl}></audio>

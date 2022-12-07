@@ -52,12 +52,11 @@ const LikesDiscoverIndex = ({track}) => {
         <>
             <div className='like-item-container'>
                 <div className='like-item-thumbnail-container'>
-                        {buttonCreator(track)}
                     <img className='like-item-thumbnail' src={track.photoUrl}/>
                 </div>
                 <div className='like-item-track-info'>
                     <h3 className='like-item-track-title'>{track.name}</h3>
-                    <h3 className='like-item-uploader-name'>Uploader</h3>
+                    <h3 className='like-item-uploader-name'>{track.artist}</h3>
                 </div>
             </div>
             <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
