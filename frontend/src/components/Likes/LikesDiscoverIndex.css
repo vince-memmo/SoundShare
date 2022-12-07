@@ -38,22 +38,17 @@
     align-items: center;
 }
 
-.playlist-item-track-title {
+.like-item-track-title {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 15px;
 }
 
-.playlist-item-uploader-name {
+.like-item-uploader-name {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 13px;
     color: grey;
-}
-
-.playlist-item-container-border {
-    width: 30vw;
-    border-bottom: 1px solid rgba(211, 211, 211, 0.5);
 }
 
 .playlist-item-delete-button {
