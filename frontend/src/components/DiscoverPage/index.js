@@ -11,13 +11,18 @@ import './DiscoverPlaylists.css'
 import './DiscoverLikes.css'
 import React, { Component } from "react";
 import PlaylistIndexLibrary from '../Playlist/PlaylistIndexLibrary';
+import { fetchUserLikes } from '../../store/likes';
 import { fetchUserPlaylists, getPlaylists } from '../../store/playlist';
+import { Link } from 'react-router-dom';
+import LikesDiscoverIndex from '../Likes/LikesDiscoverIndex';
+import { get3Likes } from '../../store/likes';
 
 function DiscoverPage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const swiperSlides = []
     const tracks = useSelector(getTracks)
+    let likes = useSelector(get3Likes)
     const playlists = useSelector(getPlaylists)
     const slides = []
     const user_id = sessionUser.id
@@ -35,10 +40,11 @@ function DiscoverPage() {
     useEffect(() => { 
       dispatch(fetchTracks())
       dispatch(fetchUserPlaylists(user_id))
+      dispatch(fetchUserLikes(user_id))
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/" />
-    
+
     return (
       <>
       <div className="discover-content">
@@ -59,7 +65,7 @@ function DiscoverPage() {
                     >
                   {tracks.map(track => 
                     <SwiperSlide>
-                      <TrackIndexItem track={track}/>
+                      <TrackIndexItem track={track} likes={likes}/>
                     </SwiperSlide>
                   )}
               </Swiper>
@@ -85,9 +91,21 @@ function DiscoverPage() {
         </div>
         </section>
         
-        <div className="discover-likes"></div>
+        <div className="discover-likes">
+          <div className='likes-title'>
+            <p className="likes-bio">Likes</p>
+            <Link to={`/library`} className='likes-link' >View all</Link>
+          </div>
+          <div className='likes-divider'></div>
+          <section className='likes-container'>
+            {likes.map(like => 
+              <>
+                <LikesDiscoverIndex track={like} likes={likes}/>
+              </>
+              )}
+          </section>
+        </div>
         <div className="right-panel">
-          
         </div>
       </div>
       </>

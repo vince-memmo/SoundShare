@@ -3,6 +3,33 @@
     border-left: .5px solid rgba(128, 128, 128, 0.5);
     height: 100vh;
     background-color: white;
-    padding-top: 150px;
-    /* z-index: 1; */
+    padding-top: 46px;
+}
+.likes-title {
+    margin: 10% 0 0 15%;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.likes-bio {
+    font-family: 'Roboto', sans-serif;
+    color: grey;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.likes-link {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: grey;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+
+.likes-divider{
+    border-top: solid rgba(211, 211, 211, 0.497) 1px;
+    width: 80%;
+    margin: 2.5% 10% 0 10%;
 }

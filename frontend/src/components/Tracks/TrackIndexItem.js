@@ -1,19 +1,20 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { receiveQueue } from '../../store/queue';
 import {receivePlaying} from '../../store/playing'
 import './TrackIndexItem.css'
 import { receiveDuration } from '../../store/duration';
 import PlaylistModal from '../Playlist/PlaylistModal';
-import { createLike } from '../../store/likes';
+import { createLike, deletePlaylistItem } from '../../store/likes';
 
-const TrackIndexItem = ({track}) => {
+const TrackIndexItem = ({track, likes}) => {
+
     const dispatch = useDispatch()
     const playing = useSelector(state => state.playing);
     const sessionUser = useSelector(state => state.session.user);
     let currentTrack = useSelector(state => state.queue)
     const user_id = sessionUser.id
-    
+
     const handleClick = (track) => {
         const playButton = document.getElementById(`play-pause-${track.id}`)
         const duration = document.getElementById(`audio-${track.id}`).duration
@@ -40,9 +41,8 @@ const TrackIndexItem = ({track}) => {
             dispatch(createLike(user_id, trackId))
         } else {
             likeEl.className = 'fa-solid fa-heart index-unliked'
+            dispatch(deletePlaylistItem(user_id, trackId))
         }
-
-
     }
 
     const buttonCreator = (track) => {
@@ -61,9 +61,29 @@ const TrackIndexItem = ({track}) => {
                         <div className={`play-item-play`} id={`play-pause-${track.id}`} onClick={() => handleClick(track)}></div>
                     </div>
                 </>
-                )
-            }
+            )
         }
+    }
+
+    const likeCreator = (track, likes) => {
+        let liked = false
+        for (let i = 0; i < Object.keys(likes).length; i++) {
+            if (track.id === likes[i].id) liked = true
+        }
+        if (liked) {
+            return (
+                <>
+                    <i class="fa-solid fa-heart index-liked" id={`like-${track.id}`} onClick={likeToggle}></i>
+                </>
+                )
+        } else {
+            return(
+                <>
+                    <i class="fa-solid fa-heart index-unliked" id={`like-${track.id}`} onClick={likeToggle}></i>
+                </>
+            )
+        }
+    }
             
     return (
         <>
@@ -72,7 +92,7 @@ const TrackIndexItem = ({track}) => {
                         {buttonCreator(track)}
                     <img className='thumbnail' src={track.photoUrl}/>
                     <div className='track-index-buttons'>
-                        <i class="fa-solid fa-heart index-unliked" id={`like-${track.id}`} onClick={likeToggle}></i>
+                        {likeCreator(track, likes)}
                         <PlaylistModal trackId={track.id}/>
                     </div>
                 </div>

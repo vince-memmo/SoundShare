@@ -1,15 +1,13 @@
-.playlist-item-container {
-    width: 30vw;
-    height: 50px;
+.like-item-container {
+    width: 80%;
     display: flex;
     align-items: center;
-    margin: 1% 0;
-    justify-content: space-between;
+    margin: 5% 0% 0 12%;
 }
 
-.playlist-item-thumbnail-container {
-    width: 50px;
-    height: 50px;
+.like-item-thumbnail-container {
+    width: 10%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,18 +25,17 @@
     z-index: 1;
 }
 
-.playlist-item-thumbnail {
-    width: 50px;
-    height: 50px;
+.like-item-thumbnail {
+    width: 2vw;
+    height: 2vw;
     border: 1px solid grey;
 }
 
-.playlist-item-track-info {
-    width: 150px;
-    margin-left: 10%;
+.like-item-track-info {
+    /* width: 150px; */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-left: -45%;
 }
 
 .playlist-item-track-title {
@@ -52,7 +49,6 @@
     font-weight: 100;
     font-size: 13px;
     color: grey;
-    margin-left: 1%;
 }
 
 .playlist-item-container-border {

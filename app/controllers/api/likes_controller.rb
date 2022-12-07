@@ -2,23 +2,10 @@ class Api::LikesController < ApplicationController
     # wrap_parameters include: Track.attribute_names + ['photo', 'song', 'artistId']
   
       def index
-        @likes = Like.where(likes: {user_id: params[:user_id]})
+        @likes = Like.where(likes: {user_id: params[:user_id]}).order('created_at DESC')
         render :index
       end
-  
-      def update
-        @track = Track.find(params[:id])
-        @track.name = params[:track][:name]
-        if params[:track][:photo]
-          file = File.open(params[:track][:photo])
-          @track.photo.attach(io: file, filename: "updated song")
-        end
-        if @track.save
-          render :show
-        else
-          render json: @track.errors.full_messages, status: 422
-        end
-      end
+
     
       def create
         @like = Like.new(like_params)
@@ -29,8 +16,8 @@ class Api::LikesController < ApplicationController
       end
   
       def destroy
-        @track = Track.find_by(id: params[:id])
-        @track.destroy
+        @like = Like.where(track_id: params[:like][:track_id]).where(user_id: params[:like][:user_id])
+        @like[0].destroy
       end
     
       private
@@ -39,3 +26,4 @@ class Api::LikesController < ApplicationController
         params.require(:like).permit(:user_id, :track_id)
       end
     end
+

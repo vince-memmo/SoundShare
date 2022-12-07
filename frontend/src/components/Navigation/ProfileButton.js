@@ -33,7 +33,6 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const logout = (e) => {
-    debugger
     e.preventDefault();
     dispatch(receivePlaying(false))
     history.push('./')

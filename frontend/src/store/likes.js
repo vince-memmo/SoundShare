@@ -27,6 +27,14 @@ const receiveLikes = (likes) => ({
     }
   }
 
+  export const get3Likes = state => {
+    if (state.likes) {
+      return Object.values(state.likes).slice(0,3)
+    } else {
+      return []
+    }
+  }
+
   export const createLike = (userId, trackId) => async dispatch => {
     console.log('createLike')
     let res = await csrfFetch(`/api/likes`, {
@@ -49,6 +57,23 @@ const receiveLikes = (likes) => ({
     if (response.ok) {
       const likes = await response.json();
       dispatch(receiveLikes(likes));
+      return likes
+    }
+  }
+
+  export const deletePlaylistItem = (userId, trackId) => async dispatch => {
+    const response = await csrfFetch(`/api/likes/na`, {
+      method: 'DELETE',
+      body: JSON.stringify({
+        like: {
+            userId,
+            trackId
+        }
+      })
+    })
+    if (response.ok) {
+      // const likeId = await response.json()
+      // dispatch(removeLike(likeId));
     }
   }
 
@@ -70,12 +95,7 @@ const receiveLikes = (likes) => ({
 //   }
 // }
 
-// export const deletePlaylistItem = (trackId, playlistId) => async dispatch => {
-//     const response = await csrfFetch(`/api/playlist_items/${trackId}?playlist_id=${playlistId}`, {method: 'DELETE'})
-//     if (response.ok) {
-//       dispatch(removePlaylist(trackId));
-//     }
-// }
+
 
 const likesReducer = (state = {}, action) => {
     switch (action.type) {

@@ -2,14 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { receiveQueue } from '../../store/queue';
 import {receivePlaying} from '../../store/playing'
-import './PlaylistItemIndex.css'
+import './LikesDiscoverIndex.css'
 import { receiveDuration } from '../../store/duration';
 import { deletePlaylistItem } from '../../store/playlist_items';
 import { useParams } from 'react-router-dom';
 import { useHistory
  } from 'react-router-dom';
  
-const PlaylistItemIndex = ({track, trackId}) => {
+const LikesDiscoverIndex = ({track}) => {
     const {playlistId} = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
@@ -48,27 +48,19 @@ const PlaylistItemIndex = ({track, trackId}) => {
         }
     }
 
-    const removePlaylistItem = () => {
-        dispatch(deletePlaylistItem(trackId, parseInt(playlistId)))
-        .then(history.push(`/library`))
-    }
-
     return (
         <>
-            <div className='playlist-item-container'>
-                <div className='playlist-item-thumbnail-container'>
+            <div className='like-item-container'>
+                <div className='like-item-thumbnail-container'>
                         {buttonCreator(track)}
-                    <img className='playlist-item-thumbnail' src={track.photoUrl}/>
+                    <img className='like-item-thumbnail' src={track.photoUrl}/>
                 </div>
-                <div className='playlist-item-track-info'>
+                <div className='like-item-track-info'>
                     <h3 className='playlist-item-track-title'>{track.name}</h3>
-                    <h3 className='playlist-item-uploader-name'>-</h3>
                     <h3 className='playlist-item-uploader-name'>Uploader</h3>
                 </div>
-                <i className="fa-solid fa-trash" onClick={removePlaylistItem}></i>
                 {/* <div className='playlist-item-container-border'></div> */}
             </div>
-            <div className='playlist-item-container-border'></div>
             <audio id={`audio-${track.id}`}src={track.songUrl}></audio>
             {/* <button onClick={() => dispatch(deleteTrack(track.id))}>Delete</button> */}
             {/* <Link to={`/tracks/${track.id}/edit`}>Update Track</Link> */}
@@ -76,4 +68,4 @@ const PlaylistItemIndex = ({track, trackId}) => {
     )
 }
 
-export default PlaylistItemIndex
+export default LikesDiscoverIndex

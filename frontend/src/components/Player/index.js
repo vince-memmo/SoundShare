@@ -24,7 +24,6 @@ function Player() {
   let limitedInterval;
 
   useEffect(() => {
-    
     if (playing.active) {
       playSong()
       const playButton = document.getElementById(`play-pause-button`);
@@ -99,6 +98,10 @@ function Player() {
     }
   }
 
+  const playNextSong = () => {
+
+  }
+
   const pauseSong = () => {
     if (currentSong !== track) {
       dispatch(receivePlaying(true))
@@ -128,7 +131,7 @@ function Player() {
           <div className='player-controls'>
             <div className='player-skip-back'></div>
             <div className='player-play' id='play-pause-button' onClick={() => handleClick(track)}></div>
-            <div className='player-skip-forward'></div>
+            <div className='player-skip-forward' onClick={() => playNextSong()}></div>
               <ProgressBar percentage={percentage} duration={duration}/>
               <audio id="audio" ref={audioRef} src={audio.src}></audio>
             <div className='player-mute' id='player-mute-button' onClick={() => muteToggle()}></div>

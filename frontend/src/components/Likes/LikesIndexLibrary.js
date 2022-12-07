@@ -6,8 +6,9 @@ import {receivePlaying} from '../../store/playing'
 import { receiveDuration } from '../../store/duration';
 import PlaylistModal from '../Playlist/PlaylistModal';
 import { useHistory } from 'react-router-dom';
+import { createLike, deletePlaylistItem } from '../../store/likes';
 
-const LikesIndexLibrary = ({track}) => {
+const LikesIndexLibrary = ({track, likes}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const playing = useSelector(state => state.playing);
@@ -33,6 +34,18 @@ const LikesIndexLibrary = ({track}) => {
         }
     }
 
+    const likeToggle = (e) => {
+        const trackId = parseInt(e.target.id.slice(5))
+        const likeEl = document.getElementById(e.target.id)
+        if (likeEl.className === 'fa-solid fa-heart index-unliked') {
+            likeEl.className = 'fa-solid fa-heart index-liked'
+            dispatch(createLike(user_id, trackId))
+        } else {
+            likeEl.className = 'fa-solid fa-heart index-unliked'
+            dispatch(deletePlaylistItem(user_id, trackId))
+        }
+    }
+
     const buttonCreator = (track) => {
         if (playing && (track.id === currentTrack.id)) {
             return (
@@ -52,6 +65,26 @@ const LikesIndexLibrary = ({track}) => {
                 )
             }
         }
+    
+    const likeCreator = (track, likes) => {
+        let liked = false
+        for (let i = 0; i < Object.keys(likes).length; i++) {
+            if (track.id === likes[i].id) liked = true
+        }
+        if (liked) {
+            return (
+                <>
+                    <i class="fa-solid fa-heart index-liked" id={`like-${track.id}`} onClick={likeToggle}></i>
+                </>
+                )
+        } else {
+            return(
+                <>
+                    <i class="fa-solid fa-heart index-unliked" id={`like-${track.id}`} onClick={likeToggle}></i>
+                </>
+            )
+        }
+    }
             
     return (
         <>
@@ -59,7 +92,10 @@ const LikesIndexLibrary = ({track}) => {
                 <div className='thumbnail-container'>
                         {buttonCreator(track)}
                     <img className='thumbnail' src={track.photoUrl}/>
+                    <div className='track-index-buttons'>
+                        {likeCreator(track, likes)}
                         <PlaylistModal trackId={track.id}/>
+                    </div>
                 </div>
                 <div className=''></div>
                 <div className='track-info'>
