@@ -18,6 +18,7 @@ function PlaylistLibrary() {
 
   return (
     <>
+    <p className="update-title">Click on a song title to update your song</p>
       <div className='track-index-library-grid'>
           {tracks.map(track => 
             <>
