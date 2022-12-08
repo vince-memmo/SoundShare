@@ -83,7 +83,8 @@ function TrackForm() {
       }
     }
 
-    const errorMessage = <h3>{`You already have a song named ${name}, please chose a different name`}</h3>
+    const errorMessage = <h3 className="error-message">{`It looks like you've already used that song title, please chose a different name`}</h3>
+    const imageTitle = photoUrl ? <p className="image-file-title">{photoUrl.name}</p> : <p className="track-file-title">None</p>
 
     return (
       <>

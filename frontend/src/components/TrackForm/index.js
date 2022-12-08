@@ -82,24 +82,52 @@ function TrackForm() {
         });
     }
 
-    const errorMessage = <h3>{`You already have a song named ${name}, please chose a different name`}</h3>
+    const errorMessage = <h3 className="error-message">{`It looks like you've already used that, please chose a different name`}</h3>
+    const trackTitle = songUrl ? <p className="track-file-title">{songUrl.name}</p> : <p className="track-file-title">None</p>
+    const imageTitle = photoUrl ? <p className="image-file-title">{photoUrl.name}</p> : <p className="track-file-title">None</p>
 
     return (
       <>
-      <body className="track-form-body">
-        <form onSubmit={handleSubmit}>
-          <h1>"Create Track"</h1>
-            <label>
-               <input placeholder="track title" type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
-            </label>
-            <input type="file" onChange={(e) => setPhotoUrl(e.currentTarget.files[0])}/>
-            {!trackId && <input type="file" onChange={(e) => setSongUrl(e.currentTarget.files[0])}/>}
-            <input type="submit" ></input>
-            <ul>
-              {errors.map(error => errorMessage)}
-            </ul>
-        </form>
-      </body>
+      <div className="track-form-container">
+        <div className="track-form-div">
+          <section className="track-upload-section">
+            <form onSubmit={handleSubmit}>
+              <h1 className="upload-title">Upload your track and image here</h1>
+              {!trackId && <input id="track-input" type="file" onChange={(e) => setSongUrl(e.currentTarget.files[0])}/>}
+              <label for="track-input" className="track-upload" >Choose an audio file</label>
+              <div className="file-chosen-div">
+                <p className="file-chosen">File chosen:</p>
+                {trackTitle}
+              </div>
+              <input className="photo-upload" id="image-input" type="file" onChange={(e) => setPhotoUrl(e.currentTarget.files[0])}/>
+              <label for="image-input" className="image-upload" >Choose an image file</label>
+              <div className="file-chosen-div">
+                <p className="file-chosen">File chosen:</p>
+                {imageTitle}
+              </div>
+              <div className="track-div">
+                <div className="title-span">
+                  <p className="track-title">Title</p>
+                  <i class="fa-solid fa-asterisk"></i>
+                </div>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
+              </div>
+              <input id="track-submit-button" className="track-submit-button" type="submit" ></input>
+              <label for="track-submit-button" className="track-submit" >Upload Track</label>
+              <ul>
+                {errors.map(error => errorMessage)}
+              </ul>
+
+              <div className='audio-files-bio'>
+                <p className="audio-files-accepted">Provide MP3, WAV, ALAC, or AIFF for your audio file.   </p>
+                <a className="audio-files-link" href="https://help.soundcloud.com/hc/en-us/articles/115003452847-Uploading-requirements#typeOfFile"> Learn more about lossless HD.</a>
+              </div>
+              <p className="image-files-accepted">Provide JPEG or PNG for you image file. Use a sqaure image to prevent distortion.</p>
+
+            </form>
+          </section>
+        </div>
+      </div>
       </>
     );
   }

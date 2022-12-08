@@ -16,18 +16,19 @@ function Library() {
 
     const display = () => {
       if (selected === 'playlists') {
-        if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = '#f0'
+        if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = '#f50'
         if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = 'black'
         if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = 'black'
         return <PlaylistLibrary />
       } else if (selected === 'tracks') {
-        if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = '#f0'
+        console.log(document.querySelector(`.library-tracks-button`).style)
+        if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = '#f50'
         if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = 'black'
         if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = 'black'
         return <TracksLibrary />
       }
       else if (selected === 'likes') {
-        if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = '#f0'
+        if (document.querySelector(`.library-likes-button`)) document.querySelector(`.library-likes-button`).style.color = '#f50'
         if (document.querySelector(`.library-playlists-button`)) document.querySelector(`.library-playlists-button`).style.color = 'black'
         if (document.querySelector(`.library-tracks-button`)) document.querySelector(`.library-tracks-button`).style.color = 'black'
         return <LikesLibrary />
