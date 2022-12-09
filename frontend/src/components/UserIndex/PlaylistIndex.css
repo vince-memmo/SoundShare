@@ -1,7 +1,7 @@
-.library-playlists-container {
+.users-library-playlists-container {
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px 200px;
-    margin-top: 2%;
+    grid-template-columns: 200px 200px 200px 200px;
+    margin-top: 1%;
     grid-row-gap: 2%;
 }
 

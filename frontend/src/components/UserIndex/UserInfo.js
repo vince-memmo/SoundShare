@@ -6,14 +6,17 @@ import PlaylistIndexLibrary from "../Playlist/PlaylistIndexLibrary";
 import { createPlaylistItem } from "../../store/playlist_items";
 import './index.css'
 import './PlaylistIndex.css'
+import './TracksIndex.css'
+import './UserInfo.css'
 import { fetchUserTracks, getTracks } from "../../store/tracks";
 import TrackIndexLibrary from "../Tracks/TrackIndexLibrary";
 
-function UserInfo({userId, likes}) {
+function UserInfo({userId, likes, username}) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const playlists = useSelector(getPlaylists)
     const tracks = useSelector(getTracks)
+    const users = useSelector(state => state.users)
     
     useEffect(() => {
       dispatch(fetchUserPlaylists(userId))
@@ -24,14 +27,17 @@ function UserInfo({userId, likes}) {
       <>
       <div className="add-to-playlist">
       </div>
-        <div className="library-playlists-container">
+        <p className="user-playlist-title">{`${username}'s Playlists`}</p>
+        <div className="users-library-playlists-container">
+
             {playlists.map(playlist => 
             <>
                 <PlaylistIndexLibrary playlist={playlist}/>
             </>
             )}
         </div>
-        <div className='track-index-library-grid'>
+        <p className="user-track-title">{`${username}'s Tracks`}</p>
+        <div className='users-track-index-library-grid'>
         {tracks.map(track => 
             <>
                 <TrackIndexLibrary track={track} likes={likes}/>
