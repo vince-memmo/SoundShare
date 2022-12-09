@@ -50,3 +50,13 @@
     font-size: 25px;
     cursor: pointer;
 }
+
+.user-index-display-container {
+    display: flex;
+}
+
+.users-info-container {
+    width: 500px;
+    height: 500px;
+    border: lightgray solid 1px;
+}

@@ -4,7 +4,7 @@ import './PlaylistIndexLibrary.css'
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const PlaylistIndexLibrary = ({playlist}) => {
+const UsersPlaylistIndex = ({playlist}) => {
     const dispatch = useDispatch()
     const playing = useSelector(state => state.playing);
     const sessionUser = useSelector(state => state.session.user);
@@ -31,4 +31,4 @@ const PlaylistIndexLibrary = ({playlist}) => {
         </>
     )
 }
-export default PlaylistIndexLibrary
+export default UsersPlaylistIndex

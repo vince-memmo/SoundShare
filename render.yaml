@@ -7,7 +7,7 @@ databases:
 services:
   - type: web
     name: soundshare
-    plan: free
+    plan: starter
     region: oregon
     branch: main
     env: ruby

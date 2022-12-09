@@ -99,12 +99,20 @@ function DiscoverPage() {
           </div>
           <div className='likes-divider'></div>
           <section className='likes-container'>
-            {likes.map(like => 
+            {likes3.map(like => 
               <>
                 <LikesDiscoverIndex track={like} likes={likes3}/>
               </>
               )}
           </section>
+          <div className='links-container'>
+            <Link to={{ pathname: "https://github.com/vince-memmo/" }} target="_blank">
+                  <i className="fa-brands fa-github"></i>
+            </Link>
+            <Link to={{ pathname: "https://www.linkedin.com/in/vince-memmo-394247105/" }} target="_blank">
+                  <i className="fa-brands fa-linkedin"></i>
+            </Link>
+          </div>
         </div>
         <div className="right-panel">
         </div>
