@@ -135,11 +135,12 @@ function TrackForm() {
                 {errors.map(error => errorMessage)}
               </ul>
               <p className="image-files-accepted">Provide JPEG or PNG for you image file. Use a sqaure image to prevent distortion.</p>
-
             </form>
           </section>
         </div>
-        <div onClick={() => deleteCurrentTrack()}>Delete Track</div>
+        <div className="delete-button-container">
+          <div className='track-delete' onClick={() => deleteCurrentTrack()}>Delete Track</div>
+        </div>
       </div>
       </>
     );

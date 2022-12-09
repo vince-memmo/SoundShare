@@ -15,14 +15,15 @@ import { fetchUserLikes } from '../../store/likes';
 import { fetchUserPlaylists, getPlaylists } from '../../store/playlist';
 import { Link } from 'react-router-dom';
 import LikesDiscoverIndex from '../Likes/LikesDiscoverIndex';
-import { get3Likes } from '../../store/likes';
+import { get3Likes, getLikes } from '../../store/likes';
 
 function DiscoverPage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const swiperSlides = []
     const tracks = useSelector(getTracks)
-    let likes = useSelector(get3Likes)
+    let likes3 = useSelector(get3Likes)
+    let likes = useSelector(getLikes)
     const playlists = useSelector(getPlaylists)
     const slides = []
     const user_id = sessionUser.id
@@ -58,7 +59,7 @@ function DiscoverPage() {
             <div className="discover-singles-carousel">
               <Swiper {...settings}
                     loop={true}
-                    slidesPerView={4}
+                    slidesPerView={5}
                     simulateTouch={false}
                     navigation
 
@@ -100,7 +101,7 @@ function DiscoverPage() {
           <section className='likes-container'>
             {likes.map(like => 
               <>
-                <LikesDiscoverIndex track={like} likes={likes}/>
+                <LikesDiscoverIndex track={like} likes={likes3}/>
               </>
               )}
           </section>

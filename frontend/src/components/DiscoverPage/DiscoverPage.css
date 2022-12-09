@@ -12,19 +12,20 @@
 
 .carousel-section .swiper-container {
     overflow: hidden;
+    position: relative;
 }
 
 .carousel-section .swiper-container .swiper-button-next, 
 .carousel-section .swiper-container .swiper-button-prev {
-    top: 28%;
+    top: 43%;
 }
 
 .carousel-section .swiper-container .swiper-button-prev {
-    left: 5%;
+    z-index: 3;
 }
 
 .carousel-section .swiper-container .swiper-button-next {
-    right: 35%;
+    z-index: 3;
 }
 
 .singes-carousel-info {
@@ -67,7 +68,7 @@
 
 .discover-singles-carousel {
     width: 55vw;
-    margin-left: 7%;
+    margin-left: 4%;
 }
 
 .left-panel {

@@ -44,7 +44,7 @@ function Library() {
                 <div className='library-tracks-button' onClick={() => setSelected('tracks')}>Tracks</div>
             </div>
             <div className='header-divider'></div>
-            <div className='display-container'>
+            <div className='library-display-container'>
                 {display()}
             </div>
         </div>

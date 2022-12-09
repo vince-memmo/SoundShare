@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :playlists, only: [:index]
       resources :playlist_items, only: [:index]
     end
+    resources :users, only: [:index]
 
     resources :likes, only: [:index, :create, :destroy]
 

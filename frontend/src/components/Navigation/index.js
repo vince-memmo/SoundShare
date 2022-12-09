@@ -20,8 +20,7 @@ function Navigation() {
               <Link to={`/library`}><p className='library-button'>Library</p></Link>
             </div>
             <div className='nav-searchbar-container'>
-              <input className='nav-searchbar' placeholder='Search' type="search"></input>
-              <button type='submit' className='nav-search'></button>
+              <Link to={`/users`}><button className='nav-searchbar' type="search">Discover your fellow Artists</button></Link>
             </div>
             <div className='nav-right-elements'>
               <Link to={`/${sessionUser.id}/upload`} className='upload-button'><p >Upload</p></Link>

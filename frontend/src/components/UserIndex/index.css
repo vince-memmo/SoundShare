@@ -30,17 +30,23 @@
     height: 100vh;
 }
 
-.library-playlists-button {
-    cursor: pointer;
-    color: #f50;
-}
 
 .library-tracks-button {
     cursor: pointer;
     color: black;
 }
 
-.library-likes-button {
+.users-index-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    grid-row-gap: 2%;
+}
+
+#usernames {
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 25px;
     cursor: pointer;
-    color: black;
 }

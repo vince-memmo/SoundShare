@@ -15,6 +15,7 @@ import PlaylistForm from "./components/Playlist/PlaylistForm.js";
 import Playlists from "./components/Playlist/index.js";
 import Library from "./components/Library/index.js";
 import PlaylistShowPage from "./components/Playlist/PlaylistShowPage.js";
+import UsersIndex from "./components/UserIndex/index.js";
 
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
       </Route>
       <Route path={`/library`}>
           <Library />
+      </Route>
+      <Route path={`/users`}>
+          <UsersIndex />
       </Route>
       <Route path={`/playlists/:playlistId`}>
           <PlaylistShowPage />

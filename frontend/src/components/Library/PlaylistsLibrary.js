@@ -20,6 +20,10 @@ function PlaylistLibrary() {
 
     return (
       <>
+      <div className="add-to-playlist">
+        <p className="add-to-playlist-title">Click the three dots on a song's thumbnail to add it to a playlist</p>
+        <i  className="fa-solid fa-ellipsis library-three-dots-button"></i>
+      </div>
         <div className="library-playlists-container">
             {playlists.map(playlist => 
               <>
