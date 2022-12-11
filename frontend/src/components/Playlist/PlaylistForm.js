@@ -87,7 +87,7 @@ function PlaylistForm() {
                   <ul>
                     {errors.map(error => errorMessage)}
                   </ul>
-                  <p className="image-files-accepted">Provide JPEG or PNG for you image file. Use a sqaure image to prevent distortion.</p>
+                  <p className="image-files-accepted">Provide JPEG or PNG for you image file. Use a square image to prevent distortion.</p>
             </form>
           </section>
         </div>

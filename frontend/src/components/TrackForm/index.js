@@ -15,7 +15,8 @@ function TrackForm() {
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id
     const formType = trackId ? "Update Post" : "Create Post"
-    const loading = false
+    const [loading, setLoading] = useState(false);
+
     
       let track = {
         name: '',
@@ -58,6 +59,7 @@ function TrackForm() {
         return;
       }
 
+      setLoading(true)
 
       const formData = new FormData();
       formData.append('track[name]', name);
@@ -75,6 +77,7 @@ function TrackForm() {
           try {
             data = await res.clone().json();
           } catch {
+            setLoading(false)
             data = await res.text(); // Will hit this case if the server is down
           }
           if (data?.errors) setErrors(data.errors);
@@ -118,6 +121,8 @@ function TrackForm() {
               <ul>
                 {errors.map(error => errorMessage)}
               </ul>
+              {loading && (<div class="loader"></div>)}
+
 
               <div className='audio-files-bio'>
                 <p className="audio-files-accepted">Provide MP3, WAV, ALAC, or AIFF for your audio file.   </p>

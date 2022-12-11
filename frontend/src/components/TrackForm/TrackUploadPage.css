@@ -122,7 +122,6 @@ form {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 13px;
-    margin-top: 5px;
 }
 
 .track-div {
@@ -177,3 +176,19 @@ form {
     margin-top: 1%;
     color: red;
 }
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #f50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin-top: 4%;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  

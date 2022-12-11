@@ -18,6 +18,7 @@ function TrackForm() {
     const user_id = sessionUser.id
     const formType = trackId ? "Update Post" : "Create Post"
     const [previewUrl, setPreviewUrl] = useState('')
+    const [loading, setLoading] = useState(false);
 
     
     useEffect(() => {
@@ -69,10 +70,12 @@ function TrackForm() {
         }
       }
 
+      setLoading(true)
+
       const formData = new FormData();
       formData.append('track[name]', name);
       formData.append('track[artist_id]', user_id)
-      if (photoUrl) {
+      if (previewUrl) {
         formData.append('track[photo]', photoUrl);
       }
       if (formType === "Create Post") {
@@ -82,6 +85,7 @@ function TrackForm() {
         .then(newTrack => history.push('/library'))
         .catch(async (res) => {
           let data;
+          setLoading(false)
           try {
             // .clone() essentially allows you to read the response body twice
             data = await res.clone().json();
@@ -132,7 +136,8 @@ function TrackForm() {
               <ul>
                 {errors.map(error => errorMessage)}
               </ul>
-              <p className="image-files-accepted">Provide JPEG or PNG for you image file. Use a sqaure image to prevent distortion.</p>
+              {loading && (<div class="loader"></div>)}
+              <p className="image-files-accepted">Provide JPEG or PNG for you image file. Use a square image to prevent distortion.</p>
             </form>
           </section>
         </div>
