@@ -51,12 +51,12 @@ const LoginForm = (props) => {
     return (
         <>
         <div className="login-div">
-            <div>Welcome Back!</div>
+            <div className="welcome-back">Welcome Back!</div>
             <form onSubmit={handleSubmit} className="login-form">
                 <input type="text"  placeholder="Your Username" value={credential} onChange={(e) => setCredential(e.target.value)}/>
                 <input type="password"  placeholder="Your Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
+                    {errors.map(error => <li className="login-errors" key={error}>{error}</li>)}
                 </ul>
                 <input className="login-button-2" type="submit" value="Log In" />
             </form>

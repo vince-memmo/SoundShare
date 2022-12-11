@@ -1,4 +1,11 @@
 
+.welcome-back {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    margin: 5% 0;
+}
+
 .login-button {
     display: inline-block;
     border: none;
@@ -37,8 +44,8 @@
     margin-top: 5px;
 }
 
-.login-button-2 {
-    margin-top: 20px;
+input.login-button-2 {
+    margin-top: 4%;
     text-align: center;
     border: none;
     cursor: pointer;
@@ -48,13 +55,13 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-size: 13.5px;
+    width: 20vw;
+    padding: 2%;
 }
 
 .demo-login-form {
     display: flex;
     margin-top: 20px;
-    width: 60px;
-    height: 30px;
     text-align: center;
     border: none;
     cursor: pointer;
@@ -65,4 +72,15 @@
     font-weight: 100;
     font-size: 13.5px;
     text-align: center;
+    width: 20vw;
+    justify-content: center;
+    padding: 2%;
+}
+
+.login-errors {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+    margin-top: 1%;
+    color: red;
 }

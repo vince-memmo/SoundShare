@@ -15,6 +15,7 @@ function TrackForm() {
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id
     const formType = trackId ? "Update Post" : "Create Post"
+    const loading = false
     
       let track = {
         name: '',

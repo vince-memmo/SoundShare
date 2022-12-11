@@ -40,7 +40,7 @@ function SignupFormPage() {
   return (
     <>
       <form onSubmit={handleSubmit} className="signup-form">
-      <div>Create your SoundShare account</div>
+      <div className="signup-title">Create your SoundShare account</div>
         <label>
           <input
             type="text"
@@ -78,7 +78,7 @@ function SignupFormPage() {
             />
         </label>
         <ul>
-          {errors.map(error => <li key={error}>{error}</li>)}
+          {errors.map(error => <li className="signup-errors" key={error}>{error}</li>)}
         </ul>
         <button type="submit">Sign Up</button>
       </form>

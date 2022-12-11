@@ -55,34 +55,3 @@ const PlaylistIndexItem = ({playlist, trackID, playlistItems}) => {
     )
 }
 export default PlaylistIndexItem
-
-// const handleClick = (track) => {
-//     const playButton = document.querySelector(`.play-pause-${track.id}`)
-//     const duration = document.getElementById(`audio-${track.id}`).duration
-//     if (playButton.innerHTML === 'Play') {
-//         console.log(currentTrack)
-//         if(track.id !== currentTrack.id && currentTrack.id) {
-//             dispatch(receiveDuration(duration))
-//             dispatch(receiveQueue(track))
-//             dispatch(receivePlaying(false))
-//         } else {
-//             dispatch(receiveDuration(duration))
-//             dispatch(receiveQueue(track))
-//             dispatch(receivePlaying(true))
-//         }
-//     } else {
-//         dispatch(receivePlaying(false))
-//     }
-// }
-
-// const buttonCreator = (track) => {
-//     if (playing && (track.id === currentTrack.id)) {
-//         return (
-//             <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Pause</button>
-//         )
-//     } else {
-//         return(
-//             <button className={`play-pause play-pause-${track.id}`} id={`${track.id}`} onClick={() => handleClick(track)}>Play</button>
-//         )
-//     }
-// }

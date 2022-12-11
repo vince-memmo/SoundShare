@@ -36,7 +36,6 @@ const receiveLikes = (likes) => ({
   }
 
   export const createLike = (userId, trackId) => async dispatch => {
-    console.log('createLike')
     let res = await csrfFetch(`/api/likes`, {
         method: 'POST',
         body: JSON.stringify({

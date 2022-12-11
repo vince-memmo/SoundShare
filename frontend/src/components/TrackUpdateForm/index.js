@@ -62,7 +62,6 @@ function TrackForm() {
       e.preventDefault()
 
       if (photoUrl && previewUrl) {
-        // debugger
         const allowedImageExtensions = /(\.jpg|\.jpeg|\.png)$/i;
         if (!allowedImageExtensions.exec(photoUrl.name)) {
           alert('Invalid image file type, please upload a .jpeg, .jpg, or, .png');
@@ -105,7 +104,6 @@ function TrackForm() {
 
     const errorMessage = <h3 className="error-message">{`It looks like you've already used that song title, please chose a different name`}</h3>
     const imageTitle = photoUrl ? <p className="image-file-title">{photoUrl.name}</p> : <p className="track-file-title">None</p>
-    // debugger
     const photoPreview = previewUrl ? <img className='preview-image' src={previewUrl} alt="" /> : <img className='preview-image' src={track.photoUrl} alt="" /> 
     
     return (
