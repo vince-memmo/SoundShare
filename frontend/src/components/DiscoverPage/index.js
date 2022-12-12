@@ -12,7 +12,7 @@ import './DiscoverLikes.css'
 import React, { Component } from "react";
 import PlaylistIndexLibrary from '../Playlist/PlaylistIndexLibrary';
 import { fetchUserLikes } from '../../store/likes';
-import { fetchPlaylists, get5Playlists } from '../../store/playlist';
+import { fetchPlaylists, get4Playlists } from '../../store/playlist';
 import { Link } from 'react-router-dom';
 import LikesDiscoverIndex from '../Likes/LikesDiscoverIndex';
 import { get3Likes, getLikes } from '../../store/likes';
@@ -24,7 +24,7 @@ function DiscoverPage() {
     const tracks = useSelector(getTracks)
     let likes3 = useSelector(get3Likes)
     let likes = useSelector(getLikes)
-    const playlists = useSelector(get5Playlists)
+    const playlists = useSelector(get4Playlists)
     const slides = []
     const user_id = sessionUser ? sessionUser.id : 1
 

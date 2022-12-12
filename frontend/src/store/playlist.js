@@ -27,9 +27,9 @@ export const getPlaylists = state => {
   }
 }
 
-export const get5Playlists = state => {
+export const get4Playlists = state => {
   if (state.playlists) {
-    return Object.values(state.playlists).slice(0,5)
+    return Object.values(state.playlists).slice(0,4)
   } else {
     return []
   }
