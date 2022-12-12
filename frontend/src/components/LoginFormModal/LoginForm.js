@@ -31,8 +31,8 @@ const LoginForm = (props) => {
 
     const handleDemoSubmit = (e) => {
         e.preventDefault()
-        const credential = 'Demo-lition'
-        const password = 'password'
+        const credential = 'demo@user.com'
+        const password = 'demouser'
         setErrors([])
         dispatch(login({ credential, password }))
         .catch(async (res) => {

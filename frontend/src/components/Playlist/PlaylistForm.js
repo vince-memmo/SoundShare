@@ -83,7 +83,7 @@ function PlaylistForm() {
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
                   </div>
                   <input id="track-submit-button" className="track-submit-button" type="submit" ></input>
-                  <label for="track-submit-button" className="track-submit" >Upload Track</label>
+                  <label for="track-submit-button" className="track-submit" >Upload Playlist</label>
                   <ul>
                     {errors.map(error => errorMessage)}
                   </ul>
