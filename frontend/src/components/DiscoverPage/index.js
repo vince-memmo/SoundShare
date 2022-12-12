@@ -12,7 +12,7 @@ import './DiscoverLikes.css'
 import React, { Component } from "react";
 import PlaylistIndexLibrary from '../Playlist/PlaylistIndexLibrary';
 import { fetchUserLikes } from '../../store/likes';
-import { fetchUserPlaylists, getPlaylists } from '../../store/playlist';
+import { fetchPlaylists, get5Playlists } from '../../store/playlist';
 import { Link } from 'react-router-dom';
 import LikesDiscoverIndex from '../Likes/LikesDiscoverIndex';
 import { get3Likes, getLikes } from '../../store/likes';
@@ -24,9 +24,9 @@ function DiscoverPage() {
     const tracks = useSelector(getTracks)
     let likes3 = useSelector(get3Likes)
     let likes = useSelector(getLikes)
-    const playlists = useSelector(getPlaylists)
+    const playlists = useSelector(get5Playlists)
     const slides = []
-    const user_id = sessionUser.id
+    const user_id = sessionUser ? sessionUser.id : 1
 
     const settings = {
       dots: true,
@@ -40,7 +40,7 @@ function DiscoverPage() {
     
     useEffect(() => { 
       dispatch(fetchTracks())
-      dispatch(fetchUserPlaylists(user_id))
+      dispatch(fetchPlaylists())
       dispatch(fetchUserLikes(user_id))
     }, [dispatch])
 

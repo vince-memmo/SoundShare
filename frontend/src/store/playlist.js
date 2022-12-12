@@ -27,6 +27,14 @@ export const getPlaylists = state => {
   }
 }
 
+export const get5Playlists = state => {
+  if (state.playlists) {
+    return Object.values(state.playlists).slice(0,5)
+  } else {
+    return []
+  }
+}
+
 export const getPlaylist = playlistId => state => {
   if (state.playlists[playlistId] )
   if (state.playlists) {

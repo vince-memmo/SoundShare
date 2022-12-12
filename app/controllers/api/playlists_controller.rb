@@ -6,7 +6,7 @@ class Api::PlaylistsController < ApplicationController
         @playlists = Playlist.where(playlists: {user_id: params[:user_id]})
         render :index
       else
-        @tracks = Track.all
+        @playlists = Playlist.all
         render :index
       end
     end

@@ -15,6 +15,8 @@ function UsersIndex() {
     const likes = useSelector(state => state.likes);
     const [userId, setUserId] = useState(user_id)
     const [username, setUsername] = useState(sessionUser.username)
+    const [selected, setSelected] = useState(user_id)
+    let userClass
 
     
     useEffect(() => {
@@ -23,8 +25,15 @@ function UsersIndex() {
     }, [dispatch])
 
     const setUser = (user) => {
+      setSelected(user.id)
       setUserId(user.id)
       setUsername(user.username)
+    }
+
+    const displayNames = () => {
+      return Object.values(users).map(user => 
+        <p id='usernames' className={selected === user.id ? 'selected' : 'unselected'} onClick={() => setUser(user)}>{user.username}</p>
+      )
     }
 
     const display = () => {
@@ -40,11 +49,8 @@ function UsersIndex() {
             <div className='header-divider'></div>
             <div className='user-index-display-container'>
               <div className='users-index-container'>
-                {Object.values(users).map(user => 
-                  <>
-                    <p id='usernames' className={`${user.id}`} onClick={() => setUser(user)}>{user.username}</p>
-                  </>
-                  )}
+                <h3 className="artists">Artists</h3>
+                {displayNames()}
               </div>
               <div className="users-info-container">
                 {display()}

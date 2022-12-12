@@ -49,7 +49,7 @@ ApplicationRecord.transaction do
       audio_file2 = URI.open('https://soundshare-vmemmo-dev.s3.us-west-1.amazonaws.com/%5BYT2mp3.info%5D+-+Kanye+West+-+Clique+ft.+Big+Sean+%26+Jay-Z+(Explicit)+(320kbps).mp3')
       track2.song.attach(io: audio_file2, filename: '%5BYT2mp3.info%5D+-+Drake+-+Hotline+Bling+(Official+Audio)+(320kbps)+(2).mp3')
 
-      track3 = Track.create!(name: "Bound 2", artist_id: 1)
+      track3 = Track.create!(name: "Bound 2", artist_id: 2)
       image_file3 = URI.open('https://soundshare-vmemmo-dev.s3.us-west-1.amazonaws.com/download.jpeg')
       track3.photo.attach(io: image_file3, filename: 'download.jpeg')
       audio_file3 = URI.open('https://soundshare-vmemmo-dev.s3.us-west-1.amazonaws.com/%5BYT2mp3.info%5D+-+Kanye+West+-+Bound+2+(audio)+(320kbps).mp3')

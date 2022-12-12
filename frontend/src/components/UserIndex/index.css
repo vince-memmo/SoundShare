@@ -45,6 +45,24 @@
     margin-left: 2vw;
 }
 
+.selected {
+    color: #f50;
+   }
+   
+.unselected {
+       color: black;
+}
+
+.artists {
+    margin-bottom: 4%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    cursor: pointer;
+    color: #f50;
+    text-decoration: underline;
+}
+
 #usernames {
     margin-bottom: 2%;
     font-family: 'Roboto', sans-serif;
@@ -60,3 +78,4 @@
 .users-info-container {
     margin-left: 3vw;
 }
+
