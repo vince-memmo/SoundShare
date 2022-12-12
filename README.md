@@ -118,5 +118,5 @@ const tracksReducer = (state = {}, action) => {
 
 ```
 
+This React Hook to Thunk Middleware to Backend MVC to Reducer to Redux Store process flow is what allows the SoundShare user to upload and viewtracks and playlists, like tracks, and navigate through the website with a smooth listening experience. 
 
- 
