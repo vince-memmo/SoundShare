@@ -25,7 +25,7 @@ const PlaylistIndexLibrary = ({playlist}) => {
                         }}
                         className="library-playlist-title" >{playlist.name}
                     </Link>
-                    <h3 className='library-playlist-uploader'>Uploader</h3>
+                    <h3 className='library-playlist-uploader'>{playlist.artist}</h3>
                 </div>
             </div>
         </>
