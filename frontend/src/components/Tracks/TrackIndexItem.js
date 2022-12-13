@@ -46,6 +46,7 @@ const TrackIndexItem = ({track, likes}) => {
     }
 
     const buttonCreator = (track) => {
+        debugger
         if (playing && (track.id === currentTrack.id)) {
             return (
                 <>

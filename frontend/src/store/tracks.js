@@ -28,6 +28,14 @@ export const getTracks = state => {
   }
 }
 
+export const get8Tracks = state => {
+  if (state.tracks) {
+    return Object.values(state.tracks).slice(0,8)
+  } else {
+    return []
+  }
+}
+
 export const getTrack = trackId => state => {
   if (state.tracks[trackId] )
   if (state.tracks) {

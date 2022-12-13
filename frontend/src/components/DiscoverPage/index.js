@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchTracks } from "../../store/tracks";
-import { getTracks } from "../../store/tracks";
+import { get8Tracks } from "../../store/tracks";
 import TrackIndexItem from "../Tracks/TrackIndexItem";
 import './DiscoverPage.css'
 import './DiscoverPlaylists.css'
@@ -21,7 +21,7 @@ function DiscoverPage() {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const swiperSlides = []
-    const tracks = useSelector(getTracks)
+    const tracks = useSelector(get8Tracks)
     let likes3 = useSelector(get3Likes)
     let likes = useSelector(getLikes)
     const playlists = useSelector(get4Playlists)
@@ -53,23 +53,23 @@ function DiscoverPage() {
         <section className="carousel-section">
           <div className="singles-carousels">
             <div className='singes-carousel-info'>
-              <p className="singles-carousels-title">Charts: Top 20</p>
-              <p className="singles-carousels-bio">The most played tracks on SoundShare this week</p>
+              <p className="singles-carousels-title">Charts: Top Tracks</p>
+              <p className="singles-carousels-bio">Navigate to the artist's page to browse all song's in SoundShare's catalog</p>
             </div>
             <div className="discover-singles-carousel">
-              <Swiper {...settings}
+              {/* <Swiper {...settings}
                     loop={true}
                     slidesPerView={5}
                     simulateTouch={false}
                     navigation
 
-                    >
+                    > */}
                   {tracks.map(track => 
                     <SwiperSlide>
                       <TrackIndexItem track={track} likes={likes}/>
                     </SwiperSlide>
                   )}
-              </Swiper>
+              {/* </Swiper> */}
             </div>
             <div className='singles-carousel-border'></div>
           <div className="playlists-carousel">
